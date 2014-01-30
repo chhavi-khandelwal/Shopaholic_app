@@ -54,8 +54,14 @@ Shopaholic::Application.routes.draw do
   #     resources :products
   #   end
   namespace :admin do
-    resources :categories do
-      resources :products, shallow: true
+    resources :categories
+    resources :products do
+      resources :colors, only: [:index]
     end
+    resources :brands
+    resource :dashboard
+    root :to => 'dashboards#show', only: [:show]
   end
+
+  
 end

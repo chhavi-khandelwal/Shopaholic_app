@@ -32,9 +32,13 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_categories_url }
+      if @category.products.empty?
+        @category.destroy 
+        format.html { redirect_to admin_categories_url, notice: 'Category destroyed successfully.' }
+      else
+        format.html { redirect_to admin_categories_url, notice: "Category has Products..It can't be destroyed." }
+      end
     end
   end
 

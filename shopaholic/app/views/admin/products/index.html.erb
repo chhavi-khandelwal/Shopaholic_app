@@ -1,4 +1,10 @@
-<h1>Listing products</h1>
+<div class="head">
+  <h3>Listing products</h3>
+</div>
+<div class="head">
+  <%= button_to 'New Product', new_admin_product_path, class: 'new-btn', method: :get %>
+</div>
+
 <table class="table table-striped">
 <% @products.each do |product| %>
     <td class="list_description">
@@ -15,5 +21,3 @@
   </tr>
 <% end %>
 </table>
-<br />
-<%= link_to 'New Product', new_admin_category_product_path %>

@@ -1,0 +1,22 @@
+<div class="head">
+  <h3>Listing brands</h3>
+</div>
+<div class="head">
+  <%= button_to 'New Brand', new_admin_brand_path, class: 'new-btn', method: :get %>
+</div>
+
+<table class="table table-striped">
+  <% @brands.each do |brand| %>
+      <td class="list_description">
+        <dl>
+          <dt><%= brand.name %></dt>
+        </dl>
+      </td>
+      <td class="list_actions">
+        <%= link_to 'Edit', edit_admin_brand_path(brand), class: 'btn btn-mini' %>
+        <%= link_to 'Destroy', admin_brand_path(brand), method: :delete,
+        data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
+      </td>
+    </tr>
+  <% end %>
+</table>

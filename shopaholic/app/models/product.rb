@@ -1,5 +1,9 @@
 class Product < ActiveRecord::Base
+  has_many :sizes, through: :colors
+  has_many :colors
   belongs_to :category
-  validates :title, presence: true
+  belongs_to :brand
+  validates :title, :format => { :with => /\A(\w+\-?\w+)+\Z/, :message => "- Only letters allowed" }, :uniqueness => { :case_sensitive => false }, presence: true
+  
   scope :by_category, ->(id) { where category_id: id }
 end

@@ -46,12 +46,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Shopaholic</a>
+          <a class="brand" href= <%= admin_root_path %> >Shopaholic</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Home", admin_categories_path  %></li>
-              <li><%= link_to "About Us", "/path2"  %></li>
-              <li><%= link_to "Contact Us", "/path3"  %></li>
+              <li><%= link_to "Categories", admin_categories_path  %></li>
+              <li><%= link_to "Add Product", new_admin_product_path  %></li>
+              <li><%= link_to "Products", admin_products_path  %></li>
+              <li><%= link_to "Brands", admin_brands_path  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -60,20 +61,11 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Categories", admin_categories_path  %></li>
-            
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
+         <div class="span9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-      </div><!--/row-->
+      </div> 
 
       <footer>
         <p>&copy; Company 2014</p>

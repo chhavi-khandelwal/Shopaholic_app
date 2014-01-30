@@ -1,8 +1,8 @@
-<%= form_for([:admin, @category]) do |f| %>
-  <% if @category.errors.any? %>
+<%= form_for([:admin, @brand]) do |f| %>
+  <% if @brand.errors.any? %>
     <div id="error_explanation">
       <ul>
-      <% @category.errors.full_messages.each do |msg| %>
+      <% @brand.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

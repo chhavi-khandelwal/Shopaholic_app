@@ -1,4 +1,10 @@
-<h1>Listing categories</h1>
+<div class="head">
+  <h3>Listing categories</h3>
+</div>
+<div class="head">
+  <%= button_to 'New Category', new_admin_category_path, class: 'new-btn', method: :get %>
+</div>
+
 <table class="table table-striped">
   <% @categories.each do |category| %>
       <td class="list_description">
@@ -7,7 +13,6 @@
         </dl>
       </td>
       <td class="list_actions">
-        <%= link_to 'Show Products', admin_category_products_path(category), class: 'btn btn-mini' %>
         <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn btn-mini' %>
         <%= link_to 'Destroy', admin_category_path(category), method: :delete,
         data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
@@ -15,5 +20,3 @@
     </tr>
   <% end %>
 </table>
-<br />
-<%= link_to 'New Category', new_admin_category_path %>
