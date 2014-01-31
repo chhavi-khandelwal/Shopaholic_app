@@ -28,9 +28,12 @@ ActiveRecord::Schema.define(version: 20140130074111) do
 
   create_table "colors", force: true do |t|
     t.string   "name"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "colors", ["product_id"], name: "index_colors_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "title"
@@ -49,8 +52,11 @@ ActiveRecord::Schema.define(version: 20140130074111) do
     t.decimal  "price",            precision: 10, scale: 2
     t.decimal  "discounted_price", precision: 10, scale: 2
     t.integer  "quantity"
+    t.integer  "color_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "sizes", ["color_id"], name: "index_sizes_on_color_id", using: :btree
 
 end

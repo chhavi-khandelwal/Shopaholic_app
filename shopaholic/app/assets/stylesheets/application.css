@@ -12,3 +12,19 @@
  *= require_tree ./admin
  *= require bootstrap_and_overrides
  */
+.dashboard-container {
+  display: inline-block;
+  width: 25%;
+  height: 25%;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.product-desc {
+  display: inline-block;
+  width: 75%;
+  height: auto;
+  text-align: center;
+  border: 2px solid black;
+}
+

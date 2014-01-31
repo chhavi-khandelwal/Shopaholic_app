@@ -15,6 +15,10 @@ class Admin::ProductsController < ApplicationController
     @brands = Brand.all
   end
 
+  def show
+      @colors = @product.colors
+  end
+  
   def destroy
     @product.destroy
     respond_to do |format|

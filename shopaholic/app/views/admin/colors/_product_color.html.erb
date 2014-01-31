@@ -1,0 +1,21 @@
+<div class="head">
+  <h3>Listing colors</h3>
+</div>
+<div class="head">
+  <%= button_to 'New Color', new_admin_product_color_path(@product), class: 'new-btn', method: :get %>
+</div>
+
+<table class="table table-striped">
+  <% @colors.each do |color| %>
+    <td class="list_description">
+      <dl>
+        <dt>Name: <%= color.name %></dt>
+      </dl>
+    </td>
+    <td class="list_actions">
+      <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn btn-mini' %>
+      <%= link_to 'Destroy', admin_color_path(color), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
+    </td>
+  </tr>
+<% end %>
+</table>

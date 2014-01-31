@@ -5,6 +5,7 @@ class CreateSizes < ActiveRecord::Migration
       t.decimal :price, precision:10, scale: 2
       t.decimal :discounted_price, precision:10, scale:2
       t.integer :quantity
+      t.references :color, index: true
       t.timestamps
     end
   end
