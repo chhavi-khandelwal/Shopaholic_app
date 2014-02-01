@@ -32,6 +32,7 @@ class Admin::BrandsController < ApplicationController
   end
 
   def destroy
+    #FIXME_AB: What if there are products associated with this brand?
     @brand.destroy
     respond_to do |format|
       format.html { redirect_to admin_brands_url }
