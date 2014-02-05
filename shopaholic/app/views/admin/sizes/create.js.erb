@@ -1,0 +1,3 @@
+$('#new_size').remove();
+$current_row = $('<tr/>', {id: "#size_<%= @size.id %>"}).insertAfter($(".size-table tr").last());
+$("<%= escape_javascript(render partial: @size) %>").appendTo($current_row);

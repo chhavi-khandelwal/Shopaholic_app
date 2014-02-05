@@ -57,6 +57,7 @@ Shopaholic::Application.routes.draw do
     resources :categories
     resources :products do
       resources :colors, shallow: true
+      resources :sizes, shallow: true
     end
     resources :brands
     resource :dashboard

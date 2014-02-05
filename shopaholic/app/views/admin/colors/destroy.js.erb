@@ -1,0 +1,4 @@
+$('#new_color').remove();
+$("#color_<%= @color.id %>").remove();
+$('.notice').show();
+$('.notice p').html("<%= flash.now[:notice] %>");

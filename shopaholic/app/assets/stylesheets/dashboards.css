@@ -1,0 +1,7 @@
+.dashboard-container {
+  display: inline-block;
+  width: 25%;
+  height: 25%;
+  text-align: center;
+  border: 2px solid black;
+}

@@ -6,6 +6,10 @@
 </div>
 
 <table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
   <% @brands.each do |brand| %>
     <tr>
       <td class="list_description">
@@ -16,7 +20,7 @@
       <td class="list_actions">
         <%= link_to 'Edit', edit_admin_brand_path(brand), class: 'btn btn-mini' %>
         <%= link_to 'Destroy', admin_brand_path(brand), method: :delete,
-        data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
+        data: { confirm: "You are going to delete #{ brand.name } brand. Sure?" }, class: 'btn btn-mini' %>
       </td>
     </tr>
   <% end %>

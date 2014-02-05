@@ -5,7 +5,7 @@ class Admin::ProductsController < ApplicationController
     # if params[:category_id]
     #   @products = Product.by_category(params[:category_id])
     # else
-      @products = Product.all
+      @products = Product.page(params[:page]).per(3)
     # end
   end
 
@@ -16,7 +16,8 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-      @colors = @product.colors
+    @colors = @product.colors
+    @sizes = Size.where(color_id: @colors).order("color_id")
   end
   
   def destroy

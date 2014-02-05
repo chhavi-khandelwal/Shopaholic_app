@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+
+  rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_category
   
   def index
     @categories = Category.all
@@ -33,12 +35,8 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if @category.products.empty?
-        @category.destroy 
-        format.html { redirect_to admin_categories_url, notice: 'Category destroyed successfully.' }
-      else
-        format.html { redirect_to admin_categories_url, notice: "Category has Products..It can't be destroyed." }
-      end
+      @category.destroy 
+      format.html { redirect_to admin_categories_url, notice: 'Category destroyed successfully.' }
     end
   end
 
@@ -46,6 +44,12 @@ class Admin::CategoriesController < ApplicationController
   def set_category
       @category = Category.find(params[:id])
     end
+  
+  def cannot_destroy_category
+    respond_to do |format|
+      format.html { redirect_to admin_categories_path, notice: 'Category has products..It cannot be destroyed' }
+    end
+  end
 
   def category_params
     params.require(:category).permit(:name)

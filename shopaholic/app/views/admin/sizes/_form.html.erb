@@ -1,0 +1,45 @@
+<%= form_for [:admin, :product, @size], remote: true do |f| %>
+  <% if @size.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @size.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table table-striped color-table">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Discounted Price</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_field :name, class: 'size-text-field' %>
+        </td>
+        <td>
+          <%= f.collection_select :color_id, @colors, :id, :name, {}, class: 'size-select-list'  %>
+        </td>
+        <td>
+          <%= f.text_field :price, class: 'size-text-field' %>
+        </td>
+        <td>
+          <%= f.text_field :discounted_price, class: 'size-text-field' %>
+        </td>
+        <td>
+          <%= f.text_field :quantity, class: 'size-text-field' %>
+        </td>
+        <td>
+          <%= f.submit %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+<% end %>

@@ -1,3 +1,7 @@
+<div class="alert fade in alert-success notice">
+  <button class="close" data-dismiss="alert">×</button>
+  <p></p>
+</div>
 <div class="product-desc">
   <p>Title: <%= @product.title %></p>
   <p>Description: <%= @product.description %></p>
@@ -5,4 +9,7 @@
 
 <div class="product-desc">
   <%= render 'admin/colors/product_color' %>
+</div>
+<div class="product-desc">
+  <%= render 'admin/sizes/color_size' %>
 </div>

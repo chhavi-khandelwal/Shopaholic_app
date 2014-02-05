@@ -11,9 +11,9 @@
 
   <div class="btn-group">
     <label>Category</label>
-    <%= f.select :category_id, list_by(@categories) %>
+    <%= f.collection_select :category_id, Category.all, :id, :name  %>
     <label>Brand</label>
-    <%= f.select :brand_id, list_by(@brands) %>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name %>
   </div>
 
   <div class="field">

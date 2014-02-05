@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130074111) do
+ActiveRecord::Schema.define(version: 20140205081543) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20140130074111) do
   end
 
   add_index "colors", ["product_id"], name: "index_colors_on_product_id", using: :btree
+
+  create_table "images", force: true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "display_pic_file_name"
+    t.string   "display_pic_content_type"
+    t.integer  "display_pic_file_size"
+    t.datetime "display_pic_updated_at"
+  end
+
+  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "title"

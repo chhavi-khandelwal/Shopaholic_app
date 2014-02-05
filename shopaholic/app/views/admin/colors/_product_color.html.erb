@@ -2,20 +2,23 @@
   <h3>Listing colors</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Color', new_admin_product_color_path(@product), class: 'new-btn', method: :get %>
+  <%= button_to 'New Color', new_admin_product_color_path(@product), class: 'new-btn', method: :get, remote:true %>
 </div>
 
-<table class="table table-striped">
-  <% @colors.each do |color| %>
-    <td class="list_description">
-      <dl>
-        <dt>Name: <%= color.name %></dt>
-      </dl>
-    </td>
-    <td class="list_actions">
-      <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn btn-mini' %>
-      <%= link_to 'Destroy', admin_color_path(color), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
-    </td>
+
+<div id="color-form"></div>
+
+<table class="table table-striped color-table">
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Name</th>
+    <th>Images</th>
+    <th>Actions</th>
   </tr>
-<% end %>
+  <% @colors.each do |color| %>
+    <tr id="color_<%= color.id %>">
+      <%= render partial: 'admin/colors/color', locals: {color: color} %>
+    </tr>
+  <% end %>
 </table>

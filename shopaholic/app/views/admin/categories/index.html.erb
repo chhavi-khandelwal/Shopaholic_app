@@ -16,7 +16,7 @@
       <td class="list_actions">
         <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn btn-mini' %>
         <%= link_to 'Destroy', admin_category_path(category), method: :delete,
-        data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
+        data: { confirm: "You are going to delete #{ category.name } category. Sure?" }, class: 'btn btn-mini' %>
       </td>
     </tr>
   <% end %>

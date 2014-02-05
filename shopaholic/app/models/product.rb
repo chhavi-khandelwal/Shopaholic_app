@@ -3,9 +3,8 @@ class Product < ActiveRecord::Base
   has_many :colors
   belongs_to :category
   belongs_to :brand
-  validates :title, :format => { :with => /\A(\w+\-?\w+)+|(\w+)\Z/, :message => "- Only letters allowed" }, :uniqueness => { :case_sensitive => false }, presence: true
-  
-  scope :by_category, ->(id) { where category_id: id }
-  scope :by_product, ->(id) { where product_id: id }
+  validates :title, presence: true
+  validates :title, :format => { :with => /\A(\w+\-?\w+)+|(\w+)\Z/, :message => "- Special characters not allowed" }, unless: "title.blank?"
+  validates :title, :uniqueness => { :case_sensitive => false }
   
 end

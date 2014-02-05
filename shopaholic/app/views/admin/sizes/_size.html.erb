@@ -1,0 +1,9 @@
+<td><%= size.name %></td>
+<td><%= Color.find(size.color_id).name %></td>
+<td><%= size.price %></td>
+<td><%= size.discounted_price %></td>
+<td><%= size.quantity %></td>
+<td class="list_actions">
+  <%= link_to 'Edit', edit_admin_size_path(size), class: 'btn btn-mini', remote: true %>
+  <%= link_to 'Destroy', admin_size_path(size), method: :delete, data: { confirm: "You are going to delete #{ size.name } size. Sure?" }, class: 'btn btn-mini', remote: true %>
+</td>

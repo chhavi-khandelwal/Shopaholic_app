@@ -1,6 +1,8 @@
 class Admin::BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
   
+  rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_brand
+
   def index
     @brands = Brand.all
   end
@@ -32,7 +34,6 @@ class Admin::BrandsController < ApplicationController
   end
 
   def destroy
-    #FIXME_AB: What if there are products associated with this brand?
     @brand.destroy
     respond_to do |format|
       format.html { redirect_to admin_brands_url }
@@ -41,10 +42,16 @@ class Admin::BrandsController < ApplicationController
 
   private
   def set_brand
-      @brand = Brand.find(params[:id])
-    end
+    @brand = Brand.find(params[:id])
+  end
 
   def brand_params
     params.require(:brand).permit(:name, :logo)
+  end
+
+  def cannot_destroy_brand
+    respond_to do |format|
+      format.html { redirect_to admin_brands_path, notice: 'Brand has products..It cannot be destroyed' }
+    end
   end
 end
