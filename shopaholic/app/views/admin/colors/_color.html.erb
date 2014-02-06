@@ -4,11 +4,8 @@
   <%= color.name %>
 </td>
 <td>
-  <%= color.images.count %>
   <% color.images do |image| %>
-    <%=  1 %>
-    <%= image_tag image.display_pic.url(:medium) %>
-    <%= image_tag image.display_pic.url(:thumb) %>
+    <%= image_tag Image.first.display_pic.url %>
   <% end %>
 </td>
 <td class="list_actions"> 

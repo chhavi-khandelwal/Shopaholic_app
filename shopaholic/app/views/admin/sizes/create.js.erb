@@ -1,3 +1,6 @@
 $('#new_size').remove();
-$current_row = $('<tr/>', {id: "#size_<%= @size.id %>"}).insertAfter($(".size-table tr").last());
+var color_name = "<%= @size.color.name %>"
+$current_row = $('<tr/>', {id: "#size_<%= @size.id %>"}).addClass(color_name).insertAfter($(".size-table tr." + color_name).last());
+
 $("<%= escape_javascript(render partial: @size) %>").appendTo($current_row);
+$current_row.effect("highlight", {}, 3000);

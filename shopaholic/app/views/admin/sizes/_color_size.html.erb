@@ -17,8 +17,8 @@
     <th>Actions</th>
   </tr>
   <% @sizes.each do |size| %>
-  <tr id="size_<%= size.id %>">
-    <%= render partial: 'admin/sizes/size', locals: {size: size} %>
+  <tr id="size_<%= size.id %>", class="<%= Color.find(size.color_id).name %>">
+    <%= render partial: 'admin/sizes/size', locals: { size: size } %>
   </tr>
   <% end %>
 </table>
