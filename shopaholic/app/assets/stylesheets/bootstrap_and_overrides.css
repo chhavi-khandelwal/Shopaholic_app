@@ -12,8 +12,6 @@ li {
 }
 
 
-
-
 .size-text-field, .size-select-list {
   width: 60%;
 }
@@ -22,3 +20,19 @@ form td {
   width: 20%;
   margin-left: 0px;
 }
+
+img {
+  width: 2px;
+  height: 2px;
+}
+
+.category-table, .product-table, .brand-table {
+  border: 2px solid;
+  width: 70%;
+  margin-left: 20%;
+}
+
+td.list_actions {
+  width: 40%;
+}
+
