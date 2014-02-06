@@ -5,7 +5,6 @@ class Admin::ColorsController < ApplicationController
   def new
     @color = Color.new
     @product = Product.find(product_params)
-    # @display_pic = @color.build_image
   end
 
 
