@@ -1,16 +1,14 @@
 class Admin::ColorsController < ApplicationController
-  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color. :get_image]
+  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color]
   before_action :set_product, only: [:new, :create]
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_color
 
   def new
     @color = Color.new
-    # @product = Product.find(product_params)
   end
 
 
   def create
-    # @product = Product.find(product_params)
     @color = @product.colors.build(color_params)
     respond_to do |format|
       if @color.save
