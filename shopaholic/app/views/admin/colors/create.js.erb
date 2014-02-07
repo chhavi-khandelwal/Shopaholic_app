@@ -1,4 +1,0 @@
-$('#new_color').remove();
-$current_row = $('<tr/>', {id: "#color_<%= @color.id %>"}).appendTo($(".color-table"));
-$("<%= escape_javascript(render partial: @color) %>").appendTo($current_row);
-$current_row.effect("highlight", {}, 3000);
