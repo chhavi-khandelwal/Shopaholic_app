@@ -1,4 +1,4 @@
-<%= form_for [:admin, @color], remote: true do |f| %>
+<%= form_for [:admin, @color], :html => { multipart: true} do |f| %>
   <% if @color.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -13,11 +13,22 @@
     <tbody>
       <tr>
         <th>Name</th>
+        <th>Image</th>
         <th></th>
       </tr>
       <tr>
         <td>
             <%= f.text_field :name, class: 'size-text-field' %>
+        </td>
+        <td>
+          <%= f.fields_for :images do |builder| %>
+            <%= builder.file_field :display_pic %>
+          <% end %>
+        </td>
+        <td>
+          <div class="add-link">
+            <%= link_to "Add Image", new_image_projects_path, remote: true %>
+          </div>
         </td>
         <td>
           <%= f.submit %>
