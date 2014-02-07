@@ -1,12 +1,12 @@
 class Color < ActiveRecord::Base
   has_many :sizes, dependent: :restrict_with_exception
-  has_many :images, as: :imageable
+  has_many :images, as: :imageable, dependent: :destroy
   belongs_to :product
 
   validates :name, presence: true
   validates :name, :format => { :with => /\A(\w+\-?\w+)+|(\w+)\Z/, :message => "- Special characters not allowed" }, unless: "name.blank?"
-  validates :name, :uniqueness => { :case_sensitive => false, scope: :product_id, message: "Color with #{ name } already exists"  }
+  validates :name, :uniqueness => { :case_sensitive => false, scope: :product_id, message: "Color already exists"  }
 
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, update_only: true, allow_destroy: true
 
 end
