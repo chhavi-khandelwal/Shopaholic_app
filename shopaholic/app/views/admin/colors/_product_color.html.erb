@@ -2,7 +2,7 @@
   <h3>Listing colors</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Color', new_admin_product_color_path(@product), class: 'new-btn', method: :get, remote:true %>
+  <%= button_to 'New Color', new_admin_product_color_path(@product), class: 'new-btn', method: :get %>
 </div>
 
 
@@ -10,8 +10,6 @@
 
 <table class="table table-striped color-table">
   <tr>
-    <th></th>
-    <th></th>
     <th>Name</th>
     <th>Images</th>
     <th>Actions</th>
