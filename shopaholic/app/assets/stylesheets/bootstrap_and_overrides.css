@@ -11,6 +11,9 @@ li {
   font-weight: bold;
 }
 
+td, th {
+  text-align: center;
+}
 
 .size-text-field, .size-select-list {
   width: 60%;
@@ -21,9 +24,9 @@ form td {
   margin-left: 0px;
 }
 
-img {
-  width: 2px;
-  height: 2px;
+.color-image {
+  width: 20%;
+  height: 15%;
 }
 
 .category-table, .product-table, .brand-table {
