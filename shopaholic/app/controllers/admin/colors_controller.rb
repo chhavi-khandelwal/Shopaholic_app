@@ -1,22 +1,24 @@
 class Admin::ColorsController < ApplicationController
-  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color]
+  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color. :get_image]
+  before_action :set_product, only: [:new, :create]
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_color
 
   def new
     @color = Color.new
-    @product = Product.find(product_params)
+    # @product = Product.find(product_params)
   end
 
 
   def create
-    @product = Product.find(product_params)
+    # @product = Product.find(product_params)
     @color = @product.colors.build(color_params)
     respond_to do |format|
       if @color.save
+        @colors = @product.colors
         flash.now[:notice] = "#{ @color.name } color created succesfully."
-        format.js {}
+        format.html { redirect_to admin_product_path(@product), notice: 'Color was successfully created.' }
       else
-        format.js { render action: 'new' }
+        format.html { render action: 'new'}
       end
     end
   end
@@ -25,9 +27,9 @@ class Admin::ColorsController < ApplicationController
     respond_to do |format|
       if @color.update(color_params)
         flash.now[:notice] = "#{ @color.name } color updated succesfully."
-        format.js {  }
+        format.html { redirect_to admin_product_path(@color.product), notice: 'Color was successfully created.' }
       else
-        format.js { render action: 'edit' }
+        format.html { render action: 'edit' }
       end
     end
   end
@@ -45,12 +47,12 @@ class Admin::ColorsController < ApplicationController
     @color = Color.find(params[:id])
   end
 
-  def product_params
-    params.require(:product_id)
+  def set_product
+    @product = Product.find(params.require(:product_id))
   end
 
   def color_params
-    params.require(:color).permit!
+    params.require(:color).permit(:name, images_attributes: [:id, :display_pic])
   end
 
   def cannot_destroy_color
