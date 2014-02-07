@@ -1,4 +1,4 @@
-<%= form_for [:admin, :product, @color], remote: true, :html => { multipart: true} do |f| %>
+<%= form_for [:admin, :product, @color], :html => { multipart: true} do |f| %>
   <% if @color.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -25,6 +25,7 @@
             <%= builder.file_field :display_pic %>
           <% end %>
         </td>
+        <%= button_tag('Add More', { type: 'button', id: 'add-color-image', "data-href" => get_imagefield_as_per_type_admin_colors_path, remote: true }) %>
         <td>
           <%= f.submit %>
         </td>
