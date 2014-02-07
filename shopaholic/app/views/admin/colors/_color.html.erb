@@ -1,14 +1,12 @@
-<td></td>
-<td></td>
 <td>
   <%= color.name %>
 </td>
 <td>
-  <% color.images do |image| %>
-    <%= image_tag Image.first.display_pic.url %>
+  <% color.images.each do |image| %>
+    <%= image_tag image.display_pic.url, class: 'color-image' %>
   <% end %>
 </td>
 <td class="list_actions"> 
-  <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn btn-mini', remote:true %>
+  <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn btn-mini' %>
   <%= link_to 'Destroy', admin_color_path(color), method: :delete, data: { confirm: "You are going to delete #{ color.name } color. Sure?" }, class: 'btn btn-mini', remote:true %>
 </td>
