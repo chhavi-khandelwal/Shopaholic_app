@@ -2,10 +2,10 @@
   <h3>Listing categories</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Category', new_admin_category_path, class: 'new-btn', method: :get %>
+  <%= button_to 'New Category', new_admin_category_path, class: 'new-btn primary btn', method: :get %>
 </div>
 
-<table class="table table-striped category-table">
+<table class="table category-table">
   <tr>
     <th>Name</th>
     <th>Actions</th>
@@ -18,9 +18,9 @@
         </dl>
       </td>
       <td class="list_actions">
-        <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn btn-mini' %>
+        <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn primary btn-mini' %>
         <%= link_to 'Destroy', admin_category_path(category), method: :delete,
-        data: { confirm: "You are going to delete #{ category.name } category. Sure?" }, class: 'btn btn-mini' %>
+        data: { confirm: "You are going to delete #{ category.name } category. Sure?" }, class: 'btn primary btn-mini' %>
       </td>
     </tr>
   <% end %>
