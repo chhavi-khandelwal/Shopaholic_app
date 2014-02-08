@@ -15,6 +15,11 @@ td, th {
   text-align: center;
 }
 
+tr:first-child {
+  background-color: #B0E0E6;
+  border: 2px solid #CD3333;
+}
+
 .size-text-field, .size-select-list {
   width: 60%;
 }
