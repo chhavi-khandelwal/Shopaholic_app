@@ -2,23 +2,25 @@
   <h3>Listing products</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Product', new_admin_product_path, class: 'new-btn', method: :get %>
+  <%= button_to 'New Product', new_admin_product_path, class: 'new-btn primary btn', method: :get %>
 </div>
 
-<table class="table table-striped product-table">
-  <th>Title</th>
-  <th>Description</th>
-  <th>Actions</th>
+<table class="table product-table">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
   <%= paginate @products %>
   <% @products.each do |product| %>
     <tr>
       <td><%= product.title %></td>
       <td><%= product.description %></td>
       <td class="list_actions">
-        <%= link_to 'Show Product', admin_product_path(product), class: 'btn btn-mini' %>
-        <%= link_to 'Edit', edit_admin_product_path(product), class: 'btn btn-mini' %>
+        <%= link_to 'Show Product', admin_product_path(product), class: 'btn primary btn-mini' %>
+        <%= link_to 'Edit', edit_admin_product_path(product), class: 'btn primary btn-mini' %>
         <%= link_to 'Destroy', admin_product_path(product), method: :delete,
-        data: { confirm: "You are going to delete #{ product.title } product. Sure?" }, class: 'btn btn-mini' %>
+        data: { confirm: "You are going to delete #{ product.title } product. Sure?" }, class: 'btn primary btn-mini' %>
       </td>
     </tr>
   <% end %>
