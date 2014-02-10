@@ -1,4 +1,5 @@
 <%= form_for [:admin, @color], :html => { multipart: true} do |f| %>
+<% #FIXME_AB: THis code of displaying error message is being repeated many times, What can we do for this -%>
   <% if @color.errors.any? %>
     <div id="error_explanation">
       <ul>

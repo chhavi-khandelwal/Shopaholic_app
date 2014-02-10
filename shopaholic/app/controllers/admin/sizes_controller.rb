@@ -1,3 +1,4 @@
+#FIXME_AB: See brands controller comments
 class Admin::SizesController < ApplicationController
   before_action :set_product, only: [:new, :create]
   before_action :set_size, only: [:update, :destroy, :edit]

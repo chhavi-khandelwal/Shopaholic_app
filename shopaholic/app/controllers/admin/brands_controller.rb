@@ -4,6 +4,7 @@ class Admin::BrandsController < ApplicationController
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_brand
 
   def index
+    #FIXME_AB: Use pagination instead of displaying all records
     @brands = Brand.all
   end
 
@@ -16,6 +17,7 @@ class Admin::BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
+        #FIXME_AB: Since you are dealing with only one format, you can remove format.html block
         format.html { redirect_to admin_brands_path, notice: 'Brand was successfully created.' }
       else
         format.html { render action: 'new' }
@@ -42,6 +44,7 @@ class Admin::BrandsController < ApplicationController
 
   private
   def set_brand
+    #FIXME_AB: What if brand is not found with the id
     @brand = Brand.find(params[:id])
   end
 
