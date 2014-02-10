@@ -7,17 +7,70 @@
   margin-left: 20%;
 }
 
-.category-all-table {
-  width: 10%;
+body {
+  background-color: #D6ADFF;
+}
+
+.category-all {
+  width: 70%;
+  height: 70%;
   display: inline-block;
-  border: 2px solid;
-  
-  margin: 10% 30% 10%;
+  vertical-align: top;
+  text-align: center;
 }
 
 .recent-table {
-  width: 20%;
+  width: 100%;
   display: inline-block;
   border: 2px solid;
-  margin-left: 10% 30% 10%;
+}
+
+.dashboard-categories {
+  display: inline-block;
+  width: 30%;
+  height: 40%;
+}
+
+.dashboard-display {
+  width: 150%;
+  height: 100%;
+  margin-top: 5%;
+  background-color: #ff4444;
+  border: 5px solid #992828;
+}
+
+.dashboard-btn {
+  display: inline;
+  width: 90%;
+  padding: 22%;
+  font-size: 150%;
+  margin-left: 70%;
+}
+
+.dashboard-head {
+  font-weight: bold;
+  font-style: italic;
+  height: 40%;
+}
+
+.product-all {
+  width: 20%;
+  display: inline-block;
+  background-color: #ffc754;
+}
+
+.grid-products {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  height: 20%;
+}
+
+.dashboard-grid {
+  width: 70%;
+  height: 70%;
+}
+
+.dashboard-products {
+  padding: 7%;
+  font-size: 150%;
 }
