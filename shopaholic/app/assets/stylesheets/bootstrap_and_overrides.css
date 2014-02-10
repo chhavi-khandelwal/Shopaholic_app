@@ -29,11 +29,6 @@ form td {
   margin-left: 0px;
 }
 
-.color-image {
-  width: 20%;
-  height: 15%;
-}
-
 .category-table, .product-table, .brand-table {
   border: 2px solid;
   width: 70%;
