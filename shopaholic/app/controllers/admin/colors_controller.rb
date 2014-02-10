@@ -13,7 +13,7 @@ class Admin::ColorsController < ApplicationController
     respond_to do |format|
       if @color.save
         @colors = @product.colors
-        flash.now[:notice] = "#{ @color.name } color created succesfully."
+        flash.now[:notice] = "#{ @color.name } color created successfully."
         format.html { redirect_to admin_product_path(@product), notice: 'Color was successfully created.' }
       else
         format.html { render action: 'new'}
@@ -24,7 +24,7 @@ class Admin::ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        flash.now[:notice] = "#{ @color.name } color updated succesfully."
+        flash.now[:notice] = "#{ @color.name } color updated successfully."
         format.html { redirect_to admin_product_path(@color.product), notice: 'Color was successfully created.' }
       else
         format.html { render action: 'edit' }
@@ -35,7 +35,7 @@ class Admin::ColorsController < ApplicationController
   def destroy
     @color.destroy
     respond_to do |format|
-      flash.now[:notice] = "#{ @color.name } color destroyed succesfully."
+      flash.now[:notice] = "#{ @color.name } color destroyed successfully."
       format.js {}
     end
   end
