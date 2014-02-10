@@ -3,7 +3,7 @@
 </td>
 <td>
   <% color.images.each do |image| %>
-    <%= image_tag image.display_pic.url, class: 'color-image' %>
+    <%= image_tag image.display_pic.url(:thumb), class: 'color-image' %>
   <% end %>
 </td>
 <td class="list_actions"> 
