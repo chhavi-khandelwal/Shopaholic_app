@@ -4,7 +4,7 @@ class Color < ActiveRecord::Base
   belongs_to :product
 
   validates :name, presence: true
-  validates :name, :format => { :with => /\A(\w+\-?\w+)+|(\w+)\Z/, :message => "- Special characters not allowed" }, unless: "name.blank?"
+  validates :name, :format => { :with => /\A(\w+\-?\w+)+\Z/, :message => "- Special characters not allowed" }, unless: "name.blank?"
   validates :name, :uniqueness => { :case_sensitive => false, scope: :product_id, message: "Color already exists"  }
 
   accepts_nested_attributes_for :images, update_only: true, allow_destroy: true
