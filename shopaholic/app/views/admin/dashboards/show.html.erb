@@ -8,37 +8,36 @@
   <h5><%= @products.count %></h5>
 </div>
 
-<div>
-  <table class='table category-all-table'>
-    </tbody>
-      <tr>
-        <th>
-          WE SELL
-        </th>
-      </tr>
+<div class='dashboard-display'>
+  <div class='category-all'>
+    <div class='dashboard-head'>
+      <h2>
+        WE SELL
+      </h2>
+    </div>
+    <div class='dashboard-grid'>
       <% @categories.each do |category| %>
-        <tr>
-          <td>
-            <%= category.name %>
-          </td>
-        </tr>
+        <div class='dashboard-categories'>
+          <button type="button" class="btn btn-primary dashboard-btn"><%= category.name %></button>
+        </div>
       <% end %>
-    <tbody>
-  </table>
+    </div>
+  </div>
 
-  <table class='table recent-table'>
-    <tr>
-      <th>
-        OUR RECENT PRODUCT
-      </th>
-    </tr>
-    <% @recent_products.map do |product| %>
-      <tr>
-        <td>
-          <%= product.title %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+  <div class='product-all'>
+    <div class='recent-table'>
+      <div class='dashboard-head'>
+        <h4>
+          OUR RECENT PRODUCT
+        </h4>
+      </div>
+      <% @recent_products.map do |product| %>
+        <div class='grid-products'>
+            <button type="button" class="btn btn-warning dashboard-products"><%= product.title %></button>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
 
