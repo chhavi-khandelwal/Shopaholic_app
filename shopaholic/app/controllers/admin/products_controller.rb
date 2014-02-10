@@ -16,6 +16,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    #FIXME_AB: Why we need to define these two instance variables, all these can be fetched from @product when required
     @colors = @product.colors
     @sizes = Size.where(color_id: @colors).order("color_id")
   end

@@ -2,6 +2,7 @@ class Admin::ImagesController < ApplicationController
 
   before_action :set_image, only: [:show, :update, :destroy]
   def create
+    #FIXME_AB: Any specific reason you named it @display_pic, and not @image?
     @display_pic = Image.new(image_params)
     if @display_pic.save
       flash[:notice] = 'Image successfully uploaded'
@@ -39,3 +40,4 @@ private
 
 end
 end
+#FIXME_AB: Looks like we have an extra end here
