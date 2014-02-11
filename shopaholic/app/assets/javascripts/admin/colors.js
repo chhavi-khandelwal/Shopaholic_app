@@ -20,7 +20,6 @@ function ImageHelper() {
       var regexp = new RegExp("new_" + $link.data('association'), "g");
       $link.parent().before($link.data('content').replace(regexp, new_id));
     };
-
   }
 
   this.removeField = function() {
