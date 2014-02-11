@@ -2,10 +2,12 @@ class Admin::BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
   
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_brand
+  rescue_from ActiveRecord::RecordNotFound, with: :brand_not_found
 
   def index
     #FIXME_AB: Use pagination instead of displaying all records
-    @brands = Brand.all
+    @brands = Brand.page(params[:page]).per(3)
+    #fixed
   end
 
   def new
@@ -15,31 +17,28 @@ class Admin::BrandsController < ApplicationController
   def create
     @brand = Brand.new(brand_params)
 
-    respond_to do |format|
-      if @brand.save
-        #FIXME_AB: Since you are dealing with only one format, you can remove format.html block
-        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @brand.save
+      #FIXME_AB: Since you are dealing with only one format, you can remove format.html block
+      redirect_to admin_brands_path, notice: 'Brand was successfully created.'
+    else
+      render action: 'new'
     end
+    #FIXED
   end
 
   def update
-    respond_to do |format|
-      if @brand.update(brand_params)
-        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @brand.update(brand_params)
+      redirect_to admin_brands_path, notice: 'Brand was successfully updated.'
+    else
+      render action: 'edit'
     end
+    #FIXED
   end
 
   def destroy
     @brand.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_brands_url }
-    end
+    redirect_to admin_brands_url
+    #FIXED
   end
 
   private
@@ -53,8 +52,10 @@ class Admin::BrandsController < ApplicationController
   end
 
   def cannot_destroy_brand
-    respond_to do |format|
-      format.html { redirect_to admin_brands_path, notice: 'Brand has products..It cannot be destroyed' }
-    end
+    redirect_to admin_brands_path, notice: 'Brand has products..It cannot be destroyed'
+  end
+  #FIXED
+  def brand_not_found
+    redirect_to admin_brands_path, notice: 'Brand doesnot exist'
   end
 end

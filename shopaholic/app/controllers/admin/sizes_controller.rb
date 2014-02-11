@@ -1,11 +1,13 @@
 #FIXME_AB: See brands controller comments
 class Admin::SizesController < ApplicationController
-  before_action :set_product, only: [:new, :create]
+  before_action :set_product, only: [:new, :create, :size_not_found, :edit, :update]
   before_action :set_size, only: [:update, :destroy, :edit]
+
+  rescue_from ActiveRecord::RecordNotFound, with: :size_not_found
+
 
   def new
     @size = Size.new
-    @colors = @product.colors
   end
 
   def create
@@ -14,24 +16,16 @@ class Admin::SizesController < ApplicationController
       if @size.save
         format.js { } 
       else
-        @colors = @product.colors
         format.js { render action: 'new' }
       end
     end
   end
 
-  def edit
-    @product = @size.color.product
-    @colors = @product.colors
-  end
-
   def update
-    @product = @size.color.product 
     respond_to do |format|
       if @size.update(size_params)
         format.js {  }
       else
-        @colors = @product.colors
         format.js { render action: 'edit' }
       end
     end
@@ -50,10 +44,14 @@ class Admin::SizesController < ApplicationController
   end
 
   def set_product
-    @product = Product.find_by(id: params[:product_id])
+    @product = Product.find_by(params.require(:id))
   end
 
   def size_params
-    params.require(:size).permit(:name, :price, :discounted_price, :quantity, :color_id)
+    params.require(:size).permit(:name, :sku, :price, :discounted_price, :quantity, :color_id)
+  end
+
+  def size_not_found
+    redirect_to admin_product_path(@product), notice: 'Size doesnot exist'
   end
 end

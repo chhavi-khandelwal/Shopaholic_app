@@ -1,6 +1,8 @@
 class Admin::ColorsController < ApplicationController
-  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color]
-  before_action :set_product, only: [:new, :create]
+  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color, ]
+  before_action :set_product, only: [:new, :create, :color_not_found]
+
+  rescue_from ActiveRecord::RecordNotFound, with: :color_not_found
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_color
 
   def new
@@ -13,7 +15,7 @@ class Admin::ColorsController < ApplicationController
     respond_to do |format|
       if @color.save
         #FIXME_AB: Why defining another instance variable @colros. You can use @product.colors wherever needed
-        @colors = @product.colors
+        #fixed
         #FIXME_AB: Spelling mistake in below line
         flash.now[:notice] = "#{ @color.name } color created successfully."
         #fixed
@@ -29,10 +31,10 @@ class Admin::ColorsController < ApplicationController
       if @color.update(color_params)
         #FIXME_AB: Spelling mistake in below line
         flash.now[:notice] = "#{ @color.name } color updated successfully."
-        #fixed        
-        format.html { redirect_to admin_product_path(@color.product), notice: 'Color was successfully created.' }
+        #fixed 
+        format.html { redirect_to admin_product_path(@color.product), notice: 'Color was successfully updated.' }
       else
-        format.html { render action: 'edit' }
+        format.js { render action: 'edit' }
       end
     end
   end
@@ -55,13 +57,15 @@ class Admin::ColorsController < ApplicationController
   end
 
   def color_params
-    params.require(:color).permit(:name, images_attributes: [:id, :display_pic])
+    params.require(:color).permit(:name, images_attributes: [:id, :file])
   end
 
   def cannot_destroy_color
-    respond_to do |format|
-      flash.now[:notice] = "#{ @color.name } has sizes..It cannot be destroyed."
-      format.js { render partial: 'notice' }
-    end
+    flash.now[:notice] = "#{ @color.name } has sizes..It cannot be destroyed."
+    render partial: 'notice'
+  end
+
+  def color_not_found
+    redirect_to admin_product_path(@product), notice: 'Category doesnot exist'
   end
 end

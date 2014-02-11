@@ -2,10 +2,11 @@
 class Admin::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :category_not_found
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_category
   
   def index
-    @categories = Category.all
+    @categories = Category.page(params[:page]).per(3)
   end
 
   def new
@@ -14,31 +15,24 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to admin_category_path(@category), notice: 'Category was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @category.save
+      redirect_to admin_category_path(@category), notice: 'Category was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to admin_category_path(@category), notice: 'Category was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @category.update(category_params)
+      redirect_to admin_category_path(@category), notice: 'Category was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
-    respond_to do |format|
-      @category.destroy 
-      format.html { redirect_to admin_categories_url, notice: 'Category destroyed successfully.' }
-    end
+    @category.destroy 
+    redirect_to admin_categories_url, notice: 'Category destroyed successfully.'
   end
 
   private
@@ -47,12 +41,14 @@ class Admin::CategoriesController < ApplicationController
     end
   
   def cannot_destroy_category
-    respond_to do |format|
-      format.html { redirect_to admin_categories_path, notice: 'Category has products..It cannot be destroyed' }
-    end
+    redirect_to admin_categories_path, notice: 'Category has products..It cannot be destroyed'
   end
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def category_not_found
+    redirect_to admin_categories_path, notice: 'Category doesnot exist'
   end
 end
