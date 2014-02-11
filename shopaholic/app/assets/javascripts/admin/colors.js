@@ -8,8 +8,8 @@ function ImageHelper() {
   var imageCount = 3;
 
   this.bindEvents = function() {
-    $('.color-table').on('click', '.add-image', imageHelper.addField);
-    $('.color-table').on('click', '.remove-image', imageHelper.removeField);
+    $('#color-form').on('click', '.add-image', imageHelper.addField);
+    $('#color-form').on('click', '.remove-image', imageHelper.removeField);
   }
 
   this.addField = function() {
