@@ -2,26 +2,25 @@
   <h3>Listing brands</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Brand', new_admin_brand_path, class: 'new-btn primary btn', method: :get %>
+  <%= button_to 'New Brand', new_admin_brand_path, class: 'new-btn btn-primary btn', method: :get %>
 </div>
 
-<table class="table brand-table">
-  <tr>
-    <th>Name</th>
-    <th>Actions</th>
-  </tr>
+<div class="display-container">
+  <div class='container-head'>
+    <h5 class='brand-title'>Name</h5>
+    <h5 class='container-content'>Actions</h5>
+  </div>
   <% @brands.each do |brand| %>
-    <tr>
-      <td>
-        <dl>
-          <dt><%= brand.name %></dt>
-        </dl>
-      </td>
-      <td class="list_actions">
-        <%= link_to 'Edit', edit_admin_brand_path(brand), class: 'btn btn-mini' %>
+    <div class='container-body'>
+      <div class='brand-title'><%= brand.name %></div>
+      <div class='container-content'>
+        <%= link_to 'Edit', edit_admin_brand_path(brand), class: 'btn btn-primary' %>
         <%= link_to 'Destroy', admin_brand_path(brand), method: :delete,
-        data: { confirm: "You are going to delete #{ brand.name } brand. Sure?" }, class: 'btn btn-mini' %>
-      </td>
-    </tr>
+        data: { confirm: "You are going to delete #{ brand.name } brand. Sure?" }, class: 'btn btn-primary' %>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>
+<div class='container-pagination'>
+  <%= paginate @brands %>
+</div>

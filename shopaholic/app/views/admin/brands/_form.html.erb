@@ -9,11 +9,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class='main-form'>
+  <div>
+    <div class='form-label'>
+      <%= f.label :name %>
+    </div>
+    <div class='form-text'>
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <div class="actions">
+  <div class="form-action">
     <%= f.submit %>
   </div>
+</div>
 <% end %>

@@ -10,13 +10,14 @@
 <table class="table size-table">
   <tr>
     <th>Name</th>
+    <th>SKU</th>
     <th>Color</th>
     <th>Price</th>
     <th>Discounted Price</th>
     <th>Quantity</th>
     <th>Actions</th>
   </tr>
-  <% @sizes.each do |size| %>
+  <% Size.where(color_id: @product.colors).order("color_id").each do |size| %>
   <tr id="size_<%= size.id %>", class="<%= Color.find(size.color_id).name %>">
     <%= render partial: 'admin/sizes/size', locals: { size: size } %>
   </tr>

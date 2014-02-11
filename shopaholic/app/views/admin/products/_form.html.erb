@@ -9,22 +9,43 @@
     </div>
   <% end %>
 
-  <div class="btn-group">
-    <label>Category</label>
-    <%= f.collection_select :category_id, Category.all, :id, :name  %>
-    <label>Brand</label>
-    <%= f.collection_select :brand_id, Brand.all, :id, :name %>
-  </div>
+  <div class='main-form'>
+    <div>
+      <div class='form-label'>
+        <%= f.label :category %>
+      </div>
+      <div class='form-list'>
+        <%= f.collection_select :category_id, Category.all, :id, :name  %>
+      </div>
+    </div>
+    <div>
+      <div class='form-label'>
+        <%= f.label :brand %>
+      </div>
+      <div class='form-list'>
+        <%= f.collection_select :brand_id, Brand.all, :id, :name %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %><br>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="field">
+      <div class='form-label'>
+        <%= f.label :title %>
+      </div>
+      <div class='form-text'>
+        <%= f.text_field :title %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class='form-label'>
+        <%= f.label :description %>
+      </div>
+      <div class='form-text'>
+        <%= f.text_area :description %>
+      </div>
+    </div>
+    <div class="form-action">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

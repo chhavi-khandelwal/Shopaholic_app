@@ -2,26 +2,22 @@
   <h3>Listing categories</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Category', new_admin_category_path, class: 'new-btn primary btn', method: :get %>
+  <%= button_to 'New Category', new_admin_category_path, class: 'new-btn btn-primary btn', method: :get %>
 </div>
 
-<table class="table category-table">
-  <tr>
-    <th>Name</th>
-    <th>Actions</th>
-  </tr>
+<div class="display-container">
+  <div class='container-head'>
+    <h5 class='brand-title'>Name</h5>
+    <h5 class='container-content'>Actions</h5>
+  </div>
   <% @categories.each do |category| %>
-    <tr>
-      <td class="list_description">
-        <dl>
-          <dt><%= category.name %></dt>
-        </dl>
-      </td>
-      <td class="list_actions">
-        <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn primary btn-mini' %>
+    <div class='container-body'>
+      <div class='brand-title'><%= category.name %></div>
+      <div class='container-content'>
+        <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn btn-primary' %>
         <%= link_to 'Destroy', admin_category_path(category), method: :delete,
-        data: { confirm: "You are going to delete #{ category.name } category. Sure?" }, class: 'btn primary btn-mini' %>
-      </td>
-    </tr>
+        data: { confirm: "You are going to delete #{ category.name } category. Sure?" }, class: 'btn btn-primary' %>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>

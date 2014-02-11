@@ -2,26 +2,28 @@
   <h3>Listing products</h3>
 </div>
 <div class="head">
-  <%= button_to 'New Product', new_admin_product_path, class: 'new-btn primary btn', method: :get %>
+  <%= button_to 'New Product', new_admin_product_path, class: 'new-btn btn-primary btn', method: :get %>
 </div>
 
-<table class="table product-table">
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Actions</th>
-  </tr>
-  <%= paginate @products %>
+<div class="display-container">
+  <div class='container-head'>
+    <h5 class='container-title'>Title</h5>
+    <h5 class='container-description'>Description</h5>
+    <h5 class='container-content'>Actions</h5>
+  </div>
   <% @products.each do |product| %>
-    <tr>
-      <td><%= product.title %></td>
-      <td><%= product.description %></td>
-      <td class="list_actions">
-        <%= link_to 'Show Product', admin_product_path(product), class: 'btn primary btn-mini' %>
-        <%= link_to 'Edit', edit_admin_product_path(product), class: 'btn primary btn-mini' %>
+    <div class='container-body'>
+      <div class='container-title'><%= product.title %></div>
+      <p class='container-description'><%= product.description %></p>
+      <div class='container-content'>
+        <%= link_to 'Show Product', admin_product_path(product), class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_admin_product_path(product), class: 'btn btn-primary' %>
         <%= link_to 'Destroy', admin_product_path(product), method: :delete,
-        data: { confirm: "You are going to delete #{ product.title } product. Sure?" }, class: 'btn primary btn-mini' %>
-      </td>
-    </tr>
+        data: { confirm: "You are going to delete #{ product.title } product. Sure?" }, class: 'btn btn-primary' %>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>
+<div class='container-pagination'>
+  <%= paginate @products %>
+</div>

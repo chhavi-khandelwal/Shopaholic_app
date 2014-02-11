@@ -13,6 +13,7 @@
     <tbody>
       <tr>
         <th>Name</th>
+        <th>SKU</th>
         <th>Color</th>
         <th>Price</th>
         <th>Discounted Price</th>
@@ -24,7 +25,10 @@
           <%= f.text_field :name, class: 'size-text-field' %>
         </td>
         <td>
-          <%= f.collection_select :color_id, @colors, :id, :name, {}, class: 'size-select-list'  %>
+          <%= f.text_field :sku, class: 'size-text-field' %>
+        </td>
+        <td>
+          <%= f.collection_select :color_id, @product.colors, :id, :name, {}, class: 'size-select-list'  %>
         </td>
         <td>
           <%= f.text_field :price, class: 'size-text-field' %>

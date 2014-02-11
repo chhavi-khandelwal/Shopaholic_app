@@ -3,10 +3,10 @@
 </td>
 <td>
   <% color.images.each do |image| %>
-    <%= image_tag image.display_pic.url(:thumb), class: 'color-image' %>
+    <%= image_tag image.file.url(:thumb), class: 'color-image' %>
   <% end %>
 </td>
 <td class="list_actions"> 
-  <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn primary btn-mini' %>
-  <%= link_to 'Destroy', admin_color_path(color), method: :delete, data: { confirm: "You are going to delete #{ color.name } color. Sure?" }, class: 'btn primary btn-mini', remote:true %>
+  <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn primary btn-mini', remote: true %>
+  <%= link_to 'Destroy', admin_color_path(color), method: :delete, data: { confirm: "You are going to delete #{ color.name } color. Sure?" }, class: 'btn primary btn-mini', remote: true %>
 </td>

@@ -14,7 +14,7 @@
     <th>Images</th>
     <th>Actions</th>
   </tr>
-  <% @colors.each do |color| %>
+  <% @product.colors.each do |color| %>
     <tr id="color_<%= color.id %>">
       <%= render partial: 'admin/colors/color', locals: {color: color} %>
     </tr>
