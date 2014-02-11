@@ -4,6 +4,6 @@ class Brand < ActiveRecord::Base
   has_one :image, as: :imageable
 
   validates :name, presence: true
-  validates :name, :format => { :with => /\A(\w+\-?\w+)+\Z/, :message => "- Only letters allowed" }, :uniqueness => { :case_sensitive => false }, unless: "name.blank?"
+  validates :name, format: { with: Shopaholic::Application.config.TEXT_REGEXP, message: "- Only letters allowed" }, uniqueness: { case_sensitive: false }, unless: "name.blank?"
 
 end
