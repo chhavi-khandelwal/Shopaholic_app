@@ -14,17 +14,58 @@
  */
 
 
-.product-desc {
-  display: inline-block;
-  width: 110%;
-  height: auto;
-  text-align: center;
-  border: 2px solid black;
-}
 
 .notice {
   display: none;
 }
 
+.container-body {
+  display: block;
+  width: 96%;
+  padding: 2%;
+  border-bottom: 1px solid;
+}
 
+.container-head {
+  display: block;
+  padding: 2%;
+  width: 96%;
+  border-bottom: 1px solid;
+}
 
+.head-text {
+  display: inline-block;
+  width: 27%;
+  margin-left: 2%;
+}
+
+.container-content {
+  display: inline-block;
+  width: 30%;
+  margin-left: 2%;
+}
+
+.container-description {
+  display: inline-block;
+  width: 40%;
+  margin-left: 2%;
+}
+
+.display-container {
+  width: 100%;
+  border: 2px solid;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+
+.container-title {
+  display: inline-block;
+  margin-left: 2%;
+  width: 20%;
+}
+
+.brand-title {
+  margin-left: 13%;
+  width: 54%;
+  display: inline-block;
+}
