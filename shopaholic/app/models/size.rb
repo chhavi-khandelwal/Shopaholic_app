@@ -1,10 +1,10 @@
 class Size < ActiveRecord::Base
   belongs_to :color
 
-  validates :name, :price, :quantity, :discounted_price, presence: true
+  validates :name, :price, :quantity, :discounted_price, :sku, presence: true
 
   #FIXME_AB: To keep all regexp at one place and resuse them, it is a good idea to make a constant hash in initializers and user that hash here.
-  validates :name, format: { with: Shopaholic::Application.config.TEXT_REGEXP, message: "- Special characters not allowed" }, unless: Proc.new { |size| size.name.blank? }
+  validates :name, format: { with: TEXT_REGEXP, message: "- Special characters not allowed" }, unless: Proc.new { |size| size.name.blank? }
   #fixed
 
   #FIXME_AB: Any specific reason you are using string in unless statement
