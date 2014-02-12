@@ -19,8 +19,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-    #FIXME_AB: Why we need to define these two instance variables, all these can be fetched from @product when required
-    # @sizes = Size.where(color_id: @colors).order("color_id")
   end
   
   def destroy
@@ -58,7 +56,6 @@ class Admin::ProductsController < ApplicationController
     params.require(:product).permit(:title, :description, :category_id, :brand_id)
   end
 
-  #FIXED
   def product_not_found
     redirect_to admin_products_path, notice: 'Product doesnot exist'
   end

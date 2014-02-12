@@ -1,5 +1,5 @@
 <%= form_for([:admin, @brand]) do |f| %>
-  
+  <% #FIXME_AB: Why using tag as local variable below -%>
   <%= render partial: '/errors', locals: { tag: @brand } %>
 
 <div class='main-form'>

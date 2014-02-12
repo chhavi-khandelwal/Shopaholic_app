@@ -14,11 +14,7 @@ class Admin::ColorsController < ApplicationController
     @color = @product.colors.build(color_params)
     respond_to do |format|
       if @color.save
-        #FIXME_AB: Why defining another instance variable @colros. You can use @product.colors wherever needed
-        #fixed
-        #FIXME_AB: Spelling mistake in below line
         flash.now[:notice] = "#{ @color.name } color created successfully."
-        #fixed
         redirect_to admin_product_path(@product), notice: 'Color was successfully created.'
       else
         render action: 'new'
@@ -29,9 +25,7 @@ class Admin::ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        #FIXME_AB: Spelling mistake in below line
         flash.now[:notice] = "#{ @color.name } color updated successfully."
-        #fixed 
         format.html { redirect_to admin_product_path(@color.product), notice: 'Color was successfully updated.' }
       else
         format.js { render action: 'edit' }
