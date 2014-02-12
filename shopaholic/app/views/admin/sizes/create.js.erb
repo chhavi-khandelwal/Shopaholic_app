@@ -1,7 +1,10 @@
 $('#new_size').remove();
-var color_name = "<%= @size.color.name %>"
+var color_name = "<%= @size.color.name %>";
 
-$current_row = $('<tr/>', {id: "#size_<%= @size.id %>"}).addClass(color_name).insertAfter($(".size-table tr." + color_name).last());
+if ($('.size-table tr.' + color_name).length >= 1)
+  $current_row = $('<tr/>', {id: "#size_<%= @size.id %>"}).addClass(color_name).insertAfter($(".size-table tr." + color_name).last());
+else
+  $current_row = $('<tr/>', {id: "#size_<%= @size.id %>"}).addClass(color_name).appendTo($('.size-table'));
 
 $("<%= escape_javascript(render partial: @size) %>").appendTo($current_row);
 $current_row.effect("highlight", {}, 3000);
