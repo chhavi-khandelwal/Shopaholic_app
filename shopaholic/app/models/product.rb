@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   belongs_to :brand
 
   validates :title, presence: true
-  validates :title, format: { with: Shopaholic::Application.config.TEXT_REGEXP, message: "- Special characters not allowed" }, unless: "title.blank?"
+  validates :title, format: { with: Shopaholic::Application.config.TEXT_REGEXP, message: "- Special characters not allowed" }, unless: Proc.new { |product| product.name.blank? }
   validates :title, uniqueness: { case_sensitive: false }
   validates :description, presence: true
   
