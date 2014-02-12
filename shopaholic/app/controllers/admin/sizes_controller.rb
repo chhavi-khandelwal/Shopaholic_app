@@ -1,6 +1,6 @@
 #FIXME_AB: See brands controller comments
 class Admin::SizesController < ApplicationController
-  before_action :set_product, only: [:new, :create, :size_not_found, :edit, :update]
+  before_action :set_product, only: [:new, :create, :size_not_found, :update]
   before_action :set_size, only: [:update, :destroy, :edit]
 
   rescue_from ActiveRecord::RecordNotFound, with: :size_not_found
@@ -31,6 +31,10 @@ class Admin::SizesController < ApplicationController
     end
   end
 
+  def edit
+    @product = @size.color.product
+  end
+
   def destroy
     @size.destroy
     respond_to do |format|
@@ -44,7 +48,7 @@ class Admin::SizesController < ApplicationController
   end
 
   def set_product
-    @product = Product.find_by(params.require(:id))
+    @product = Product.find_by(params.require(:product_id))
   end
 
   def size_params
