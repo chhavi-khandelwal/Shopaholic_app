@@ -6,10 +6,13 @@ $(document).ready(function() {
 function ColorFormHelper() {
   var colorFormHelper = this;
   this.bindEvents = function() {
-    // $('.product-desc').on('click', '#create-color', this.submit);
+    $(document).on('click', '#color-submit', colorFormHelper.submitForm);
   }
 
   this.submitForm = function(e) {
-    alert('abc')
+    if (!($('#color-name').val().trim())) {
+      e.preventDefault();
+      $('#error-content').html('Name is required');
+    }
   }
 }
