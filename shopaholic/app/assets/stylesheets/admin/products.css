@@ -44,7 +44,6 @@
   margin-left: 40%;
 }
 
-
 .product-desc {
   display: inline-block;
   width: 110%;
@@ -55,4 +54,9 @@
 
 #product-content {
   margin-left: 25%;
+}
+
+#error-content {
+  font-weight: bold;
+  color: red;
 }
