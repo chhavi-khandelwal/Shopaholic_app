@@ -1,6 +1,5 @@
 <%= form_for [:admin, :product, @color] do |f| %>
-  <%= render partial: '/errors', locals: { tag: @color } %>
-  
+  <div id='error-content'></div>  
 
   <table class="table color-table">
     <tbody>
@@ -12,7 +11,7 @@
       </tr>
       <tr>
         <td>
-          <%= f.text_field :name, class: 'size-text-field' %>
+          <%= f.text_field :name, class: 'size-text-field', id: 'color-name' %>
         </td>
         <td>
           <%= f.fields_for :images, @color.images.build do |builder| %>
@@ -23,7 +22,7 @@
           </div>
         </td>
         <td>
-          <%= f.submit %>
+          <input type="submit" value="Create Color" id='color-submit'>
         </td>
       </tr>
     </tbody>
