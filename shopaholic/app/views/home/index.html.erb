@@ -1,0 +1,27 @@
+<div class='offset2'>
+  <div class="navbar navbar-fluid-top">
+    <div class="navbar-inner">
+      <div class="container-fluid nav-collapse">
+        <ul class="nav">
+          <% @categories.each do |category| %>
+            <li class='nav-list'>
+              <div class="btn-group">
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                  <%=category.name%>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role='menu'>
+                  <% category.products.each do |product|%>
+                    <li>
+                      <%= product.title %>
+                    </li>
+                  <% end %>
+                </ul><!-- dropdown menu links -->
+              </div>
+            </li>
+          <%end%>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
