@@ -1,5 +1,5 @@
 #FIXME_AB: See comments added in brands controller
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminsController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :category_not_found

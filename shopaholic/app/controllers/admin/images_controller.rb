@@ -1,4 +1,4 @@
-class Admin::ImagesController < ApplicationController
+class Admin::ImagesController < Admin::AdminsController
 
   before_action :set_image, only: [:show, :update, :destroy]
   def create

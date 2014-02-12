@@ -1,4 +1,4 @@
-class Admin::DashboardsController < ApplicationController
+class Admin::DashboardsController < Admin::AdminsController
   def show
     #FIXME_AB: Use pagination
     @products = Product.all

@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < Admin::AdminsController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :product_not_found

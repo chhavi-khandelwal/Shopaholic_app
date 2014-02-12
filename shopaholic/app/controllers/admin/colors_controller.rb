@@ -1,4 +1,4 @@
-class Admin::ColorsController < ApplicationController
+class Admin::ColorsController < Admin::AdminsController
   before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color]
   before_action :set_product, only: [:new, :create, :color_not_found]
 
@@ -12,17 +12,15 @@ class Admin::ColorsController < ApplicationController
 
   def create
     @color = @product.colors.build(color_params)
-    respond_to do |format|
-      if @color.save
-        #FIXME_AB: Why defining another instance variable @colros. You can use @product.colors wherever needed
-        #fixed
-        #FIXME_AB: Spelling mistake in below line
-        flash.now[:notice] = "#{ @color.name } color created successfully."
-        #fixed
-        redirect_to admin_product_path(@product), notice: 'Color was successfully created.'
-      else
-        render action: 'new'
-      end
+    if @color.save
+      #FIXME_AB: Why defining another instance variable @colros. You can use @product.colors wherever needed
+      #fixed
+      #FIXME_AB: Spelling mistake in below line
+      flash.now[:notice] = "#{ @color.name } color created successfully."
+      #fixed
+      redirect_to admin_product_path(@product), notice: 'Color was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
