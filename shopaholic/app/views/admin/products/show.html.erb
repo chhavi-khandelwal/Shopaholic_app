@@ -1,11 +1,13 @@
-<div class="product-desc" id="product-head">
-  <p>Title: <%= @product.title %></p>
-  <p>Description: <%= @product.description %></p>
-</div>
+<div id='product-content'>
+  <div class="product-desc" id="product-head">
+    <p>Title: <%= @product.title %></p>
+    <p>Description: <%= @product.description %></p>
+  </div>
 
-<div class="product-desc">
-  <%= render 'admin/colors/product_color' %>
-</div>
-<div class="product-desc">
-  <%= render 'admin/sizes/color_size' %>
+  <div class="product-desc">
+    <%= render 'admin/colors/product_color' %>
+  </div>
+  <div class="product-desc">
+    <%= render 'admin/sizes/color_size' %>
+  </div>
 </div>
