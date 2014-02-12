@@ -18,3 +18,5 @@
 //= require jquery.remotipart
 //= require jquery.ui.all
 //= require turbolinks
+
+
