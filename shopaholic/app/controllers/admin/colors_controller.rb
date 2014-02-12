@@ -1,5 +1,5 @@
 class Admin::ColorsController < ApplicationController
-  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color, ]
+  before_action :set_color, only: [:update, :destroy, :edit, :cannot_destroy_color]
   before_action :set_product, only: [:new, :create, :color_not_found]
 
   rescue_from ActiveRecord::RecordNotFound, with: :color_not_found
@@ -19,9 +19,9 @@ class Admin::ColorsController < ApplicationController
         #FIXME_AB: Spelling mistake in below line
         flash.now[:notice] = "#{ @color.name } color created successfully."
         #fixed
-        format.html { redirect_to admin_product_path(@product), notice: 'Color was successfully created.' }
+        redirect_to admin_product_path(@product), notice: 'Color was successfully created.'
       else
-        format.html { render action: 'new'}
+        render action: 'new'
       end
     end
   end
