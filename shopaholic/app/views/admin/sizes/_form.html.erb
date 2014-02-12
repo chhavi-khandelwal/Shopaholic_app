@@ -1,13 +1,6 @@
 <%= form_for [:admin, :product, @size], remote: true do |f| %>
-  <% if @size.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @size.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: '/errors', locals: { tag: @size } %>
+  
   <table class="table color-table">
     <tbody>
       <tr>
