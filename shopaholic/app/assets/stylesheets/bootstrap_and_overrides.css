@@ -15,6 +15,10 @@ td, th {
   text-align: center;
 }
 
+.alert {
+  margin-left: 20%;
+}
+
 tr:first-child {
   background-color: #B0E0E6;
   border: 2px solid #CD3333;
