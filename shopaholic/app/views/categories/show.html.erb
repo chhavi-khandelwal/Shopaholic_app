@@ -1,0 +1,41 @@
+<div id='display-container' class="span8">
+  <div id="new-today">
+    New Today
+  </div> 
+  <div id="latest-products-container">
+    <% @products.each do |product| %>
+      <div class="latest-products">
+        <div class='latest-products-image'>
+          <%= image_tag(product.colors.first.images.first.file.url(:medium)) %>
+        </div>
+        <div class="latest-products-desc">
+          <div>
+            <h5><%= product.title.capitalize %></h5>
+          </div>
+          <div>
+            <p class='inline-tile'><%= product.description.truncate(40) %></p>
+          </div>
+          <div>
+            <h5 class='inliner-tile'> BRAND: </h5>
+            <p class='inliner-tile'><%= product.brand.name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="filters" class="span2">
+  <div class="filter-heading"> Colors </div>
+    <div class="filters">
+        <div class="filterElement">
+          <input type="checkbox" value="">
+            <span class="filterName"></span>
+            <br>
+        </div>
+    </div>
+  <div class="filter-heading"> Sizes </div>
+  <div class="filters">
+    
+  </div>
+</div>
