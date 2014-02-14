@@ -38,26 +38,26 @@
   </head>
   <body>
     <header id='home-header'>
-  <div id='top-head'>
-    <p class='inline-tile'>WELCOME |</p>
-    <p class='inline-tile'>
-      <a href="">LOGIN</a>
-    </p>
-    <div class='inline-tile'>
-      <input type="text" id='search-box' placeholder="Search on Shopaholic.."/>
-    </div>
-  </div>
-  <div id='bottom-head'>
-    <a class='inline-tile site-name' id='site-logo' href="<%= root_url %>">Shopaholic</a>
-    <div id='header-links' class='inline-tile'>
-      <% Category.all.each do |category| %>
-        <div class='inline-tile head-link'>
-          <%= link_to category.name.capitalize, category_path(category), class: 'link-tile category-tile', id: category.id %>
+      <div id='top-head'>
+        <p class='inline-tile'>WELCOME |</p>
+        <p class='inline-tile'>
+          <a href="">LOGIN</a>
+        </p>
+        <div class='inline-tile'>
+          <input type="text" id='search-box' placeholder="Search on Shopaholic.."/>
         </div>
-      <% end %>
-    </div>
-  </div>
-</header>
+      </div>
+      <div id='bottom-head'>
+        <a class='inline-tile site-name' id='site-logo' href="<%= root_url %>">Shopaholic</a>
+        <div id='header-links' class='inline-tile'>
+          <% Category.all.each do |category| %>
+            <div class='inline-tile head-link'>
+              <%= link_to category.name.capitalize, category_path(category), class: 'link-tile category-tile', id: category.id %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </header>
 
     <div class="container-fluid">
       <div class="row-fluid">
