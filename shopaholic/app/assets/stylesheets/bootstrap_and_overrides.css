@@ -46,3 +46,12 @@ td.list_actions {
 .dashboard-products {
   width: 100%;
 }
+
+.nav-list {
+  padding-left: 0px;
+  padding-right: 2px;
+}
+
+.nav-btn {
+  padding: 8%;
+}
