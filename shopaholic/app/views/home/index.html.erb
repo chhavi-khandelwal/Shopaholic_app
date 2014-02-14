@@ -1,27 +1,26 @@
-<div class='offset2'>
-  <div class="navbar navbar-fluid-top">
-    <div class="navbar-inner">
-      <div class="container-fluid nav-collapse">
-        <ul class="nav">
-          <% @categories.each do |category| %>
-            <li class='nav-list'>
-              <div class="btn-group">
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                  <%=category.name%>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role='menu'>
-                  <% category.products.each do |product|%>
-                    <li>
-                      <%= product.title %>
-                    </li>
-                  <% end %>
-                </ul><!-- dropdown menu links -->
-              </div>
-            </li>
-          <%end%>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
+<div id='display-container' class="span8">
+  <div id="new-today">
+    New Today
+  </div> 
+  <div id="latest-products-container">
+    <% @products.each do |product| %>
+      <div class="latest-products">
+        <div class='latest-products-image'>
+          <%= image_tag(product.colors.first.images.first.file.url(:medium)) %>
+        </div>
+        <div class="latest-products-desc" >
+          <div>
+            <h5><%= product.title.capitalize %></h5>
+          </div>
+          <div>
+            <p class='inline-tile'><%= product.description.truncate(40) %></p>
+          </div>
+          <div>
+            <h5 class='inliner-tile'> BRAND: </h5>
+            <p class='inliner-tile'><%= product.brand.name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
