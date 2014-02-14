@@ -5,9 +5,7 @@ class Admin::BrandsController < Admin::AdminsController
   rescue_from ActiveRecord::RecordNotFound, with: :brand_not_found
 
   def index
-    #FIXME_AB: Use pagination instead of displaying all records
     @brands = Brand.page(params[:page]).per(3)
-    #fixed
   end
 
   def new
@@ -18,12 +16,10 @@ class Admin::BrandsController < Admin::AdminsController
     @brand = Brand.new(brand_params)
 
     if @brand.save
-      #FIXME_AB: Since you are dealing with only one format, you can remove format.html block
       redirect_to admin_brands_path, notice: 'Brand was successfully created.'
     else
       render action: 'new'
     end
-    #FIXED
   end
 
   def update
@@ -32,13 +28,11 @@ class Admin::BrandsController < Admin::AdminsController
     else
       render action: 'edit'
     end
-    #FIXED
   end
 
   def destroy
     @brand.destroy
     redirect_to admin_brands_url
-    #FIXED
   end
 
   private
@@ -54,7 +48,7 @@ class Admin::BrandsController < Admin::AdminsController
   def cannot_destroy_brand
     redirect_to admin_brands_path, notice: 'Brand has products..It cannot be destroyed'
   end
-  #FIXED
+
   def brand_not_found
     redirect_to admin_brands_path, notice: 'Brand doesnot exist'
   end

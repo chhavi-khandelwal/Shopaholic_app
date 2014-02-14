@@ -5,11 +5,7 @@ class Admin::ProductsController < Admin::AdminsController
 
 
   def index
-    # if params[:category_id]
-    #   @products = Product.by_category(params[:category_id])
-    # else
-      @products = Product.page(params[:page]).per(3)
-    # end
+    @products = Product.page(params[:page]).per(3)
   end
 
   def new
@@ -19,8 +15,7 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def show
-    #FIXME_AB: Why we need to define these two instance variables, all these can be fetched from @product when required
-    # @sizes = Size.where(color_id: @colors).order("color_id")
+    @sizes = Size.where(color_id: @product.colors).order("color_id")
   end
   
   def destroy
@@ -58,7 +53,6 @@ class Admin::ProductsController < Admin::AdminsController
     params.require(:product).permit(:title, :description, :category_id, :brand_id)
   end
 
-  #FIXED
   def product_not_found
     redirect_to admin_products_path, notice: 'Product doesnot exist'
   end

@@ -2,8 +2,6 @@ class Admin::ImagesController < Admin::AdminsController
 
   before_action :set_image, only: [:show, :update, :destroy]
   def create
-    #FIXME_AB: Any specific reason you named it @display_pic, and not @image?
-    #FIXED used @file
     @file = Image.new(image_params)
     if @file.save
       flash[:notice] = 'Image successfully uploaded'
@@ -40,5 +38,3 @@ class Admin::ImagesController < Admin::AdminsController
     end
 
 end
-#FIXME_AB: Looks like we have an extra end here
-#FIXED
