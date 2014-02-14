@@ -20,3 +20,9 @@
 //= require turbolinks
 
 
+$(document).ready(function() {
+  $('.row-fluid').css('min-height', $(window).height());
+});
+
+
+

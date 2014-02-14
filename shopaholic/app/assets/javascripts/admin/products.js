@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var colorFormHelper = new ColorFormHelper();
   colorFormHelper.bindEvents();
+
 });
 
 function ColorFormHelper() {
@@ -14,5 +15,10 @@ function ColorFormHelper() {
       e.preventDefault();
       $('#error-content').html('Name is required');
     }
+    else if (!($('#color_images_attributes_0_file').val().trim())) {
+      e.preventDefault();
+      $('#error-content').html('Image is required');
+    }
+
   }
 }
