@@ -66,9 +66,7 @@ Shopaholic::Application.routes.draw do
     root :to => 'dashboards#show', only: [:show]
   end
 
-  resources :home do
-    get 'get_products_data', on: :collection
-  end
+  resources :home
   root :to => 'home#index'
   
 end
