@@ -37,30 +37,68 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href= <%= admin_root_path %> >Shopaholic</a>
-        </div>
-      </div>
+    <header id='home-header'>
+  <div id='top-head'>
+    <p class='inline-tile'>WELCOME |</p>
+    <p class='inline-tile'>
+      <a href="">LOGIN</a>
+    </p>
+    <div class='inline-tile'>
+      <input type="text" id='search-box' placeholder="Search on Shopaholic.."/>
     </div>
+  </div>
+  <div id='bottom-head'>
+    <a class='inline-tile site-name' id='site-logo' href="<%= root_url %>">Shopaholic</a>
+    <div id='header-links' class='inline-tile'>
+      <% Category.all.each do |category| %>
+        <div class='inline-tile head-link'>
+          <%= link_to category.name.capitalize, category_path(category), class: 'link-tile category-tile', id: category.id %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
 
     <div class="container-fluid">
       <div class="row-fluid">
-         <div class="span9">
+         <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div> 
 
-      <footer>
-        <p></p>
+      <footer id='bottom-foot'>
+        <div class='inline-tile logo-tile'>
+          <p class='block-tile foot site-name'>Shopaholic</p>
+          <p class='foot'>© 2006-2014 Shopaholic Inc.<br>
+            SHOPAHOLIC, SHOPAHOLIC LOGO are<br>
+            trademarks of Shopaholic Inc.
+          </p>
+        </div>
+        <div class='inline-tile foot'>
+          <p class='block-tile'>HOME</p>
+          <%= link_to 'HOME', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'HOME', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'HOME', '#', class: 'link-tile block-tile' %>
+        </div>
+        <div class='inline-tile foot'>
+          <p class='block-tile'>CONTACT US</p>
+          <%= link_to 'CONTACT US', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'CONTACT US', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'CONTACT US', '#', class: 'link-tile block-tile' %>
+        </div>
+        <div class='inline-tile foot'>
+          <p class='block-tile'>HELP</p>
+          <%= link_to 'HELP', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'HELP', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'HELP', '#', class: 'link-tile block-tile' %>
+        </div>
+        <div class='inline-tile foot'>
+          <p class='inline-tile'>ACCOUNT</p>
+          <%= link_to 'ACCOUNT', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'ACCOUNT', '#', class: 'link-tile block-tile' %>
+          <%= link_to 'ACCOUNT', '#', class: 'link-tile block-tile' %>
+        </div>
       </footer>
 
     </div> <!-- /container -->
