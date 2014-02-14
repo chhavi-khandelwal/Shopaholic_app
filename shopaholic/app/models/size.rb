@@ -4,7 +4,7 @@ class Size < ActiveRecord::Base
   validates :name, :price, :quantity, :discounted_price, :sku, presence: true
 
   #FIXME_AB: TEXT_REGEXP does not make it clear what it is doing. Also Make a constant has not just a constant like: REGEXP[:name_format]
-  validates :name, format: { with: TEXT_REGEXP, message: "- Special characters not allowed" }, unless: Proc.new { |size| size.name.blank? }
+  validates :name, format: { with: REGEXP[:name_format], message: "- Special characters not allowed" }, unless: Proc.new { |size| size.name.blank? }
 
   validates :quantity, numericality: { greater_than: 0 }, unless: Proc.new { |size| size.quantity.blank? }
 
