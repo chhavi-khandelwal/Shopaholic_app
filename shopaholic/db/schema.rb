@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140205081543) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
-    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,17 +39,17 @@ ActiveRecord::Schema.define(version: 20140205081543) do
     t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "display_pic_file_name"
-    t.string   "display_pic_content_type"
-    t.integer  "display_pic_file_size"
-    t.datetime "display_pic_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.integer  "category_id"
     t.integer  "brand_id"
     t.datetime "created_at"
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140205081543) do
 
   create_table "sizes", force: true do |t|
     t.string   "name"
+    t.string   "sku"
     t.decimal  "price",            precision: 10, scale: 2
     t.decimal  "discounted_price", precision: 10, scale: 2
     t.integer  "quantity"
