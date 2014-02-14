@@ -1,14 +1,7 @@
 <%= form_for [:admin, @product] do |f| %>
 <% #FIXME_AB: This code is being repeated -%>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: '/errors', locals: { tag: @product } %>
+  <!-- fixed -->
 
   <div class='main-form'>
     <div>

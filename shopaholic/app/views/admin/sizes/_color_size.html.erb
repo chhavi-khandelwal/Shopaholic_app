@@ -18,7 +18,7 @@
     <th>Actions</th>
   </tr>
   <% #FIXME_AB: As a good practice we should not use Models directly in views -%>
-  <% Size.where(color_id: @product.colors).order("color_id").each do |size| %>
+  <% @sizes.each do |size| %>
   <tr id="size_<%= size.id %>", class="<%= Color.find(size.color_id).name %>">
     <%= render partial: 'admin/sizes/size', locals: { size: size } %>
   </tr>
