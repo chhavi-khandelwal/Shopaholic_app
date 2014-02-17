@@ -1,14 +1,12 @@
 <%= form_for [:admin, @product] do |f| %>
-<% #FIXME_AB: This code is being repeated -%>
   <%= render partial: '/errors', locals: { tag: @product } %>
-  <!-- fixed -->
-
   <div class='main-form'>
     <div>
       <div class='form-label'>
         <%= f.label :category %>
       </div>
       <div class='form-list'>
+        <% #FIXME_AB: Should not refer model directly in views. -%>
         <%= f.collection_select :category_id, Category.all, :id, :name  %>
       </div>
     </div>
@@ -17,6 +15,7 @@
         <%= f.label :brand %>
       </div>
       <div class='form-list'>
+        <% #FIXME_AB: Should not refer model directly in views. -%>
         <%= f.collection_select :brand_id, Brand.all, :id, :name %>
       </div>
     </div>

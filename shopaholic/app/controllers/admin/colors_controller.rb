@@ -22,6 +22,7 @@ class Admin::ColorsController < Admin::AdminsController
 
   def update
     respond_to do |format|
+      #FIXME_AB: Since we are handelling only one format so we can avoid using format.html
       if @color.update(color_params)
         format.html { redirect_to admin_product_path(@color.product), notice: "#{ @color.name } was successfully updated." }
       else
@@ -34,6 +35,7 @@ class Admin::ColorsController < Admin::AdminsController
     @color.destroy
     respond_to do |format|
       flash.now[:notice] = "#{ @color.name } color destroyed successfully."
+      #FIXME_AB: Why this blank format.js{}. I think we don't need it.
       format.js {}
     end
   end

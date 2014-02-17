@@ -1,3 +1,4 @@
+#FIXME_AB: Checkout the brands controller for comments
 class Admin::CategoriesController < Admin::AdminsController
 
   before_action :set_category, only: [:show, :edit, :update, :destroy]

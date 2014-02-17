@@ -4,3 +4,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 end
+
+#FIXME_AB: Remove unused/empty js css files

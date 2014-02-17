@@ -2,6 +2,7 @@ class Admin::SizesController < Admin::AdminsController
   before_action :set_product, only: [:new, :create, :size_not_found, :update]
   before_action :set_size, only: [:update, :destroy, :edit]
 
+  #FIXME_AB: This way we are handling any RecordNotFound as size_not_found. Not the right way. Should handle using if else condition where we expect this type of situation can occur. I am against this approach. Should not be done at any place in the application
   rescue_from ActiveRecord::RecordNotFound, with: :size_not_found
 
 
@@ -10,9 +11,11 @@ class Admin::SizesController < Admin::AdminsController
   end
 
   def create
+    #FIXME_AB: You should use color.size.build
     @size = Size.new(size_params)
     respond_to do |format|
       if @size.save
+        #FIXME_AB: Why we need empty format blocks. Also since here we have only one format, lets remove them
         format.js { } 
       else
         format.js { render action: 'new' }
@@ -31,6 +34,7 @@ class Admin::SizesController < Admin::AdminsController
   end
 
   def edit
+    #FIXME_AB: Since we have a @size available we can directly use @size.color.product wherever needed. SO we don't need to define @product variable
     @product = @size.color.product
   end
 

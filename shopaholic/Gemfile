@@ -51,3 +51,8 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'twitter-bootstrap-rails'
 gem 'mysql2'
+
+group :development do
+  gem 'quiet_assets'
+  gem 'thin'
+end

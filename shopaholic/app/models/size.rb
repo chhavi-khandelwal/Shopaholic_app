@@ -1,3 +1,4 @@
+#FIXME_AB: See brand model for comments
 class Size < ActiveRecord::Base
   belongs_to :color
 

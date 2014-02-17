@@ -15,11 +15,14 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def show
+    #FIXME_AB: on the other hand you should do @product.colors.sizes.where(...)
     @sizes = Size.where(color_id: @product.colors).order("color_id")
+    #FIXME_AB: Also use symbol in above line order(:color_id)
   end
   
   def destroy
     @product.destroy
+    #FIXME_AB: Flash message missing
     redirect_to admin_products_url(@product.category)
   end
 
@@ -54,6 +57,7 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def product_not_found
+    #FIXME_AB: typo
     redirect_to admin_products_path, notice: 'Product doesnot exist'
   end
 end

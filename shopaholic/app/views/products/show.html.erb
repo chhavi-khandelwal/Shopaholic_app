@@ -7,6 +7,7 @@
     <% end%>
   </div>
   <div class='product-in-focus'>
+    <% #FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:medium) 
     <%= image_tag(@color.images.first.file.url(:medium)) %>
   </div>
 
@@ -31,6 +32,7 @@
   <div id='color-avail'>
     <% @product.colors.each do |color| %>
       <div class='color-all'>
+        <% #FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:small) -%>
         <%= image_tag(color.images.first.file.url(:small), class: 'small-image') %>
       </div>
     <% end %>
