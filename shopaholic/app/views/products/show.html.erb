@@ -1,0 +1,43 @@
+<div class="product-focus span8">
+  <div class="product-angles">
+    <% @color.images.each do |image| %>
+      <div class='angle'>
+        <%= image_tag(image.file.url(:small), class: 'small-image') %>
+      </div>
+    <% end%>
+  </div>
+  <div class='product-in-focus'>
+    <%= image_tag(@color.images.first.file.url(:medium)) %>
+  </div>
+
+  <div id='details-tab-container'>
+    <div id='details-tab'>
+      <p>Details</p>
+    </div>
+    <div id="details-tab-content" >
+      <div>
+        <h5><%= @product.title.upcase %></h5>
+      </div>
+      <div>
+        <p class='inline-tile'><%= @product.description %></p>
+      </div>
+      <div>
+        <h5 class='inliner-tile'> BRAND: </h5>
+        <p class='inliner-tile'><%= @product.brand.name %></p>
+      </div>
+    </div>
+  </div>
+  
+  <div id='color-avail'>
+    <% @product.colors.each do |color| %>
+      <div class='color-all'>
+        <%= image_tag(color.images.first.file.url(:small), class: 'small-image') %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<div class='inline-tile cart-btn'>
+  <button type="button" class="btn btn-success add-btn">Add To Cart</button>
+</div>

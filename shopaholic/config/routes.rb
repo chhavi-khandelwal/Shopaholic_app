@@ -1,5 +1,8 @@
 Shopaholic::Application.routes.draw do
+  # get "products/show"
+  # resources :products, only: [:show]
   resources :categories
+  get "products/:id/colors/:color_id", to: "products#show", as: 'product'
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

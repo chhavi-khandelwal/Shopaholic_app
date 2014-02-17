@@ -83,21 +83,51 @@
   background: #eee;
 }
 
+.latest-color-image {
+  width: 200px;
+  height: 200px;
+}
+
 .latest-products
 {
   display: inline-block;
-  margin: 5%;
+  margin: 1%;
   width:30%;
   border: 2px solid #eee;
   border-radius: 5px;
-  text-align: center;
 }
 
 .inliner-tile {
   display: inline;
 }
 
+.latest-products-image {
+  text-align: center;
+  padding-top: 3%;
+}
+
+.latest-products-desc {
+  margin-left: 2%;
+}
+
+.latest-products {
+  vertical-align: top;
+}
 
 .latest-products:hover .latest-products-image {
   box-shadow: 1px 1px 5px 5px #888888;
+}
+
+.latest-products:hover .quick-view {
+  display: inline-block;
+}
+
+.visibility {
+  display: none;
+}
+
+.quick-view {
+  z-index: 4;
+  text-align: center;
+  margin-top: -40%;
 }
