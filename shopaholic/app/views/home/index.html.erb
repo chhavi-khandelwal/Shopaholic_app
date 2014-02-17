@@ -7,6 +7,7 @@
       <div class="latest-products">
         <div class='latest-products-image'>
           <% color = product.colors.first %>
+          <% #FIXME_AB: as stated other places it should be extracted in a method -%>
           <%= image_tag(product.colors.first.images.first.file.url(:medium)) %>
           <%= button_to 'Quick View', product_path({id: product.id, color_id: color.id}), class: 'quick-view visibility btn', method: :get %>
         </div>

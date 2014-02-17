@@ -10,6 +10,7 @@ class Brand < ActiveRecord::Base
 
 
   #FIXME_AB: No validation for length of the name. What if I save a very long string in name. it would be truncated automatically to 255 chars
+  #FIXME_AB: Spaces and hyphen should be allowed in name
 
 
 end
