@@ -1,43 +1,60 @@
 <div class="product-focus span8">
   <div class="product-angles">
     <% @color.images.each do |image| %>
-      <div class='angle'>
+      <div class='angle' data-focussed-image="<%= image.file.url(:medium) %>">
         <%= image_tag(image.file.url(:small), class: 'small-image') %>
       </div>
     <% end%>
   </div>
+
   <div class='product-in-focus'>
-    <% #FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:medium) 
+    <%#FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:medium) -%>
     <%= image_tag(@color.images.first.file.url(:medium)) %>
   </div>
 
-  <div id='details-tab-container'>
-    <div id='details-tab'>
-      <p>Details</p>
+  <div id='size-and-details'>
+    <div id='offer-sizes'>
+      <div id='size-name' class='block-tile'>
+        <p class='inline-tile'> SELECT SIZE - </p>
+        <span id='selected-size-value' class='inline-tile'><strong><%= @color.sizes.first.name %></strong></span>
+      </div>
+      <div class='block-tile size-container'>
+        <% @color.sizes.each do |size| %>
+          <div class='size-all'>
+            <span>
+              <%= size.name %>
+            </span>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div id="details-tab-content" >
-      <div>
-        <h5><%= @product.title.upcase %></h5>
+
+    <div id='details-tab-container'>
+      <div id='details-tab'>
+        <p>Details</p>
       </div>
-      <div>
-        <p class='inline-tile'><%= @product.description %></p>
-      </div>
-      <div>
-        <h5 class='inliner-tile'> BRAND: </h5>
-        <p class='inliner-tile'><%= @product.brand.name %></p>
+      <div id="details-tab-content" >
+        <div>
+          <h5><%= @product.title.upcase %></h5>
+        </div>
+        <div>
+          <p class='inline-tile'><%= @product.description %></p>
+        </div>
+        <div>
+          <h5 class='inliner-tile'> BRAND: </h5>
+          <p class='inliner-tile'><%= @product.brand.name %></p>
+        </div>
       </div>
     </div>
   </div>
-  
   <div id='color-avail'>
     <% @product.colors.each do |color| %>
-      <div class='color-all'>
-        <% #FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:small) -%>
+      <div class='color-all' data-image0="<%= color.images.first.file.url(:small) %>" data-image1="<%= color.images.second.file.url(:small) %>" data-image2="<%= color.images.last.file.url(:small) %>" data-focussed-image="<%= color.images.first.file.url(:medium) %>" data-image-angle0="<%= color.images.first.file.url(:medium) %>" data-image-angle1="<%= color.images.second.file.url(:medium) %>" data-image-angle2="<%= color.images.last.file.url(:medium) %>" data-sizes="<%= color.sizes.pluck(:name).flatten %>">
+        <%#FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:small) -%>
         <%= image_tag(color.images.first.file.url(:small), class: 'small-image') %>
       </div>
     <% end %>
   </div>
-
 </div>
 
 <div class='inline-tile cart-btn'>

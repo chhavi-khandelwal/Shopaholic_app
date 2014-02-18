@@ -13,6 +13,12 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+     <style type="text/css">
+    body 
+    {
+      background: #04B4AE;
+    }
+  </style>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -61,9 +67,11 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-         <div class="span9">
+         <div class="span10">
           <%= bootstrap_flash %>
-          <%= yield %>
+          <div id="dashboard-container">
+            <%= yield %>
+          </div>
         </div>
       </div> 
 

@@ -24,6 +24,10 @@
   margin-top: 5%;
 }
 
+#new-tag-btn {
+  text-align: center;
+}
+
 .form-head {
   margin-bottom: 5%;
   margin-left: 40%;
@@ -34,6 +38,7 @@
   border: 2px solid;
   padding: 5%;
   width: 50%;
+  border-radius: 10px;
 }
 
 .form-foot {
@@ -53,7 +58,8 @@
 }
 
 #product-content {
-  margin-left: 10%;
+  margin-left:5%;
+  width: 80%;
 }
 
 #error-content {

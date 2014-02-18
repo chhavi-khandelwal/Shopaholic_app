@@ -9,7 +9,8 @@ function ProductGrid() {
     //binds click event to the input checkboxes
     this.bindEvents = function() {
         // #FIXME_AB: This is too generic event binding any checkbox in the body. Make it more precise 
-        $('body').on('click', 'input[type="checkbox"]', productGrid.filterProducts);
+        $('#filters').on('click', 'input[type="checkbox"]', productGrid.filterProducts);
+        //fixed
     }
 
     //filters the products from selected filter

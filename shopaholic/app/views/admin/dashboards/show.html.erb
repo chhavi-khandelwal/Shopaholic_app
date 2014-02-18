@@ -1,43 +1,33 @@
-<div class='dashboard-container container'>
-  <h3 class= "a">Categories</h3>
-  <h5><%= @categories.count %></h5>
-</div>
+<div id="dashboard-title">Hello, Admin This is Your Dashboard</div>
 
-<div class='dashboard-container container'>
-  <h3>Products</h3>
-  <h5><%= @products.count %></h5>
-</div>
-
-<div class='dashboard-display'>
-  <div class='category-all'>
-    <div class='dashboard-head'>
-      <h2>
-        WE SELL
-      </h2>
-    </div>
-    <div class='dashboard-grid'>
+<div class='box'>
+  <div class="box-link">
+    <%= link_to 'Add More', new_admin_category_path, class: 'pure-black-link' %>
+  </div>
+  <h3>Recent Categories</h3>
+  <div class="box-desc">
+    <div class="box-recent">
       <% @categories.each do |category| %>
-        <div class='dashboard-categories'>
-          <button type="button" class="btn btn-primary dashboard-btn"><%= category.name %></button>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class='product-all'>
-    <div class='recent-table'>
-      <div class='dashboard-head'>
-        <h4>
-          OUR RECENT PRODUCT
-        </h4>
-      </div>
-      <% @recent_products.map do |product| %>
-        <div class='grid-products'>
-            <button type="button" class="btn btn-warning dashboard-products"><%= product.title %></button>
-        </div>
-      <% end %>
-    </div>
+        <div class="tag margin-up-5"><%= link_to category.name, admin_category_path(category), class: 'pure-black-link' %></div>
+          <% end %>
+     </div>
+    <h4>You have <%= Category.all.count %> total Categories</h4>
+    <div><%= link_to 'Show all Categories of your website', admin_categories_path, class: 'pure-blue-link' %></div>
   </div>
 </div>
 
-
+<div class='box'>
+  <div class="box-link">
+    <%= link_to 'Add More', new_admin_product_path, class: 'pure-black-link' %>
+  </div>
+  <h3>Recent Products</h3>
+  <div class="box-desc">
+    <div class="box-recent">
+      <% @products.each do |product| %>
+        <%= link_to(image_tag(product.colors.first.images.first.file.url(:medium), width: '75px'), admin_product_path(product))  %>
+          <% end %>
+     </div>
+    <h4>You have <%= @products.count %> total Products</h4>
+    <div><%= link_to 'Show all Products of your website', admin_products_path, class: 'pure-blue-link' %></div>
+  </div>
+</div>
