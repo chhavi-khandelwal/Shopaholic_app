@@ -1,6 +1,0 @@
-// #FIXME_AB: Try to avoid using jS code in erb files, can this be done using callback of ajax request 
-$('#new_color').remove();
-$('div.alert').remove();
-$("#color_<%= @color.id %>").remove();
-$('.notice').show();
-$('.notice p').html("<%= flash.now[:notice] %>");
