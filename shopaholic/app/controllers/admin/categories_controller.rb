@@ -2,7 +2,7 @@
 #fixed
 class Admin::CategoriesController < Admin::AdminsController
 
-  before_action :set_category, only: [:update, :destroy, :cannot_destroy_category]
+  before_action :set_category, only: [:update, :destroy, :cannot_destroy_category, :edit, :show]
 
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_category
   
