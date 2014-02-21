@@ -1,5 +1,3 @@
-#FIXME_AB: Checkout the brands controller for comments
-#fixed
 class Admin::CategoriesController < Admin::AdminsController
 
   before_action :set_category, only: [:update, :destroy, :cannot_destroy_category]

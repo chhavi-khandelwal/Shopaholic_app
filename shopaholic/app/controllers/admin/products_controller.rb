@@ -12,20 +12,16 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def show
-    #FIXME_AB: on the other hand you should do @product.colors.sizes.where(...)
     @sizes = @product.sizes.where(color_id: @product.colors).order(:color_id)
-    #FIXME_AB: Also use symbol in above line order(:color_id)
-    #fixed
   end
   
   def destroy
     if(@product.destroy)
-    #FIXME_AB: Flash message missing
       redirect_to admin_products_url(@product.category), notice: "Product #{ @product.title } was destroyed successfully."
     else
+      #FIXME_AB: In case of failure, this message is not good.
       redirect_to admin_products_url(@product.category), alert: "Product #{ @product.title } was not destroyed successfully."
     end
-    #fixed
   end
 
   def create

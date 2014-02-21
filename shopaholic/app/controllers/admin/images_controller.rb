@@ -8,9 +8,7 @@ class Admin::ImagesController < Admin::AdminsController
   #   if @file.save
   #     flash[:notice] = 'Image successfully uploaded'
   #   else
-  #     #FIXME_AB: Typo
   #     flash[:error] = 'An error occured, image cannot be uploaded'
-  #     #fixed
   #   end
   # end
 
@@ -21,20 +19,18 @@ class Admin::ImagesController < Admin::AdminsController
     if @file.update(image_params)
       flash[:notice] = 'Image successfully updated'
     else
-      #FIXME_AB: Typo
       flash[:error] = 'An error occurred, image cannot be updated'
-      #fixed
     end
     redirect_to @file.imageable
   end
 
   def destroy
     #FIXME_AB: this is basically image.photo. Looks something confusing image.attachment or image.file make sense
-    @file.file = nil
-    #fixed
+    @file.file = nil #FIXME_AB: Why file.file?
     if @file.save
       flash[:notice] = 'Image successfully Removed'
     else
+      #FIXME_AB: typos
       flash[:error] = 'An error occured, image couldnot be removed'
     end
     redirect_to @file.imageable

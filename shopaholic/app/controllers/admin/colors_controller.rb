@@ -24,20 +24,16 @@ class Admin::ColorsController < Admin::AdminsController
   end
 
   def update
-    #FIXME_AB: Since we are handelling only one format so we can avoid using format.html
     if @color.update(color_params)
       redirect_to admin_product_path(@color.product), notice: "#{ @color.name } was successfully updated."
     else
       redirect_to :back, alert: "#{ @color.name } wasn't successfully updated."
     end
-    #fixed
   end
 
   def destroy
     @color.destroy
     render json: @color
-      #FIXME_AB: Why this blank format.js{}. I think we don't need it.
-      #fixed
   end
 
   private
