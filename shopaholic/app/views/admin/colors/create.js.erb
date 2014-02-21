@@ -1,3 +1,0 @@
-$('#new_color').remove();
-$current_row = $('<tr/>', {id: "#color_<%= @color.id %>"}).insertAfter($(".color-table tr").last());
-$("<%= escape_javascript(render partial: @color) %>").appendTo($current_row);
