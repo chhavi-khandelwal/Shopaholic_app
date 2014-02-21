@@ -1,5 +1,5 @@
 class Admin::BrandsController < Admin::AdminsController
-  before_action :set_brand, only: [:update, :destroy, :cannot_destroy_brand]
+  before_action :set_brand, only: [:update, :destroy, :cannot_destroy_brand, :edit, :show]
   
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_brand
 
