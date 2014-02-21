@@ -12,6 +12,7 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def show
+    #FIXME_AB: What about this: @product.sizes.order(:color_id)
     @sizes = @product.sizes.where(color_id: @product.colors).order(:color_id)
   end
   

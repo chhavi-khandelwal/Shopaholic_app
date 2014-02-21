@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  #FIXME_AB: When product is created its published status is NULL in db, why?
   has_many :sizes, through: :colors
   has_many :colors
   belongs_to :category
