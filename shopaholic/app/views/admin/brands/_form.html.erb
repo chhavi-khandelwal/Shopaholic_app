@@ -5,7 +5,8 @@
 <div class='main-form'>
   <div>
     <div class='form-label'>
-      <%= f.label :name %>
+      <%= f.label :name, class: 'inliner-tile' %>
+      <p class='mandatory'>*</p>
     </div>
     <div class='form-text'>
       <%= f.text_field :name %>
@@ -13,6 +14,9 @@
   </div>
   <div class="form-action">
     <%= f.submit %>
+  </div>
+  <div id='mandatory-comment'>
+    <p class='mandatory'>*mandatory field</p>
   </div>
 </div>
 <% end %>

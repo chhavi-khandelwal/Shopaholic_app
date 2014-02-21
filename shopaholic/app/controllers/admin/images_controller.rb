@@ -1,16 +1,18 @@
 class Admin::ImagesController < Admin::AdminsController
 
   before_action :set_image, only: [:show, :update, :destroy]
-  def create
-    #FIXME_AB: Shouldn't we use color.images.build ?
-    @file = Image.new(image_params)
-    if @file.save
-      flash[:notice] = 'Image successfully uploaded'
-    else
-      #FIXME_AB: Typo
-      flash[:error] = 'An error occured, image cannot be uploaded'
-    end
-  end
+
+  # def create
+  #   #FIXME_AB: Shouldn't we use color.images.build ?
+  #   @file = Image.new(image_params)
+  #   if @file.save
+  #     flash[:notice] = 'Image successfully uploaded'
+  #   else
+  #     #FIXME_AB: Typo
+  #     flash[:error] = 'An error occured, image cannot be uploaded'
+  #     #fixed
+  #   end
+  # end
 
   def show
   end
@@ -20,14 +22,16 @@ class Admin::ImagesController < Admin::AdminsController
       flash[:notice] = 'Image successfully updated'
     else
       #FIXME_AB: Typo
-      flash[:error] = 'An error occured, image cannot be updated'
+      flash[:error] = 'An error occurred, image cannot be updated'
+      #fixed
     end
     redirect_to @file.imageable
   end
 
   def destroy
     #FIXME_AB: this is basically image.photo. Looks something confusing image.attachment or image.file make sense
-    @file.photo = nil
+    @file.file = nil
+    #fixed
     if @file.save
       flash[:notice] = 'Image successfully Removed'
     else
@@ -37,8 +41,9 @@ class Admin::ImagesController < Admin::AdminsController
   end
 
   private
-    def image_params
-      params.require(:image).permit(:file)
-    end
+  
+  def image_params
+    params.require(:image).permit(:file)
+  end
 
 end

@@ -35,7 +35,9 @@ function ProductGrid() {
         if (filters.length > 0) {
             filters.each(function() {
                 // #FIXME_AB: There are too many things going in following line 
-                selectedProducts.push("div.latest-products[" + "data-" + filter + "=" + "'" + $(this).val() + "'" + "]");
+                //fixed
+                var filterSelector = filter + "='" + $(this).val() + "'"
+                selectedProducts.push("div.latest-products[data-" + filterSelector + "]");
             });
         }
         return selectedProducts;

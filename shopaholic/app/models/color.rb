@@ -1,7 +1,7 @@
 class Color < ActiveRecord::Base
   has_many :sizes, dependent: :restrict_with_exception
   has_many :images, as: :imageable, dependent: :destroy
-  belongs_to :product
+  belongs_to :product, touch: true
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :name, format: { with: REGEXP[:name_format], multiline: true, message: "- Special characters not allowed" }, unless: "name.blank?"

@@ -1,64 +1,60 @@
 class Admin::SizesController < Admin::AdminsController
-  before_action :set_product, only: [:new, :create, :size_not_found, :update]
+  before_action :set_product, only: [:new, :create]
   before_action :set_size, only: [:update, :destroy, :edit]
 
   #FIXME_AB: This way we are handling any RecordNotFound as size_not_found. Not the right way. Should handle using if else condition where we expect this type of situation can occur. I am against this approach. Should not be done at any place in the application
-  rescue_from ActiveRecord::RecordNotFound, with: :size_not_found
-
+  #fixed-used if condition
 
   def new
-    @size = Size.new
+    @size = Size.new 
+    # render partial: 'form'
   end
 
   def create
     #FIXME_AB: You should use color.size.build
     @size = Size.new(size_params)
-    respond_to do |format|
-      if @size.save
-        #FIXME_AB: Why we need empty format blocks. Also since here we have only one format, lets remove them
-        format.js { } 
-      else
-        format.js { render action: 'new' }
-      end
+    if @size.save
+      flash[:notice] = "Successfully created size"
+      #FIXME_AB: Why we need empty format blocks. Also since here we have only one format, lets remove them
+      #fixed
+    else
+      flash[:alert] = "Can't create product"
+      render action: :new 
     end
+
   end
 
   def update
-    respond_to do |format|
-      if @size.update(size_params)
-        format.js {  }
-      else
-        format.js { render action: 'edit' }
-      end
+    if @size.update(size_params)
+      flash[:notice] = "Successfully updated size"
+    else
+      render action: :edit
     end
   end
 
   def edit
     #FIXME_AB: Since we have a @size available we can directly use @size.color.product wherever needed. SO we don't need to define @product variable
-    @product = @size.color.product
+      render partial: 'shallow_form'
+    #fixed
   end
 
   def destroy
     @size.destroy
-    respond_to do |format|
-      format.js { }
-    end
   end
 
   private
   def set_size
-    @size = Size.find(params[:id])
+    @size = Size.find_by(id: params[:id])
+    redirect_to admin_products_path, alert: 'Size Not found' if(@size.nil?)
   end
 
   def set_product
-    @product = Product.find_by(params.require(:product_id))
+    @product = Product.find_by(id: params[:product_id])
+    redirect_to admin_products_path, alert: 'Product Not found' if(@product.nil?)
   end
 
   def size_params
     params.require(:size).permit(:name, :sku, :price, :discounted_price, :quantity, :color_id)
   end
 
-  def size_not_found
-    redirect_to admin_product_path(@product), notice: 'Size doesnot exist'
-  end
 end

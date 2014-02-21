@@ -1,3 +1,4 @@
 #FIXME_AB: I would prefer if you have named it little better like Admin::AdminBaseController. But leave it for now.
+#fixed
 class Admin::AdminsController < ApplicationController
 end

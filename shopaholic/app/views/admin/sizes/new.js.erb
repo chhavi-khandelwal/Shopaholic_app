@@ -1,2 +1,1 @@
-// #FIXME_AB: Move this is JS file. Avoid using js in erb files. This can be handle with ajax success callback. Return html from your rails app, js will display the html wherever needed 
-$('#size-form').html("<%= escape_javascript render 'form' %>")
+$('#size-form').html("<%= escape_javascript(render 'form') %>")

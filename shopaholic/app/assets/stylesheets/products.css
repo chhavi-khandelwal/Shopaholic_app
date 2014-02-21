@@ -12,6 +12,11 @@
   width: 10%;
 }
 
+.size-container {
+  display: block;
+  margin-left: 5%;
+}
+
 .product-in-focus-desc {
   display: inline-block;
   border: 1px solid #ADACAC;
@@ -46,6 +51,12 @@
   height: 60px;
 }
 
+#offer-sizes {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+}
+
 #details-tab {
   border: 1px solid #ADACAC;
   text-align: center;
@@ -53,8 +64,9 @@
 }
 
 #details-tab-container {
-  display: block;
+  display: inline-block;
   margin-left: 5%;
+  width: 20%;
 }
 
 #color-avail {
@@ -95,10 +107,4 @@
   border: 1px solid #ADACAC;
   display: inline;
   padding: 5%;
-}
-
-#size-and-details {
-  margin-left: 5%;
-  display: inline-block;
-  width: 25%;
 }

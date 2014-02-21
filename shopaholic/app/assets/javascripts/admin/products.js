@@ -19,6 +19,9 @@ function ColorFormHelper() {
       e.preventDefault();
       $('#error-content').html('Image is required');
     }
-
+    // else if ($('.image-field .color-image').length() == 3) {
+    //   e.preventDefault();
+    //   $('#error-content').html('3 images required for the color');
+    // }
   }
 }

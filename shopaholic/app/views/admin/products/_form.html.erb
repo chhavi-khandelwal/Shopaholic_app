@@ -7,7 +7,8 @@
       </div>
       <div class='form-list'>
         <% #FIXME_AB: Should not refer model directly in views. -%>
-        <%= f.collection_select :category_id, Category.all, :id, :name  %>
+        <%= f.collection_select :category_id, @categories, :id, :name  %>
+        <%=#fixed %>
       </div>
     </div>
     <div>
@@ -16,13 +17,15 @@
       </div>
       <div class='form-list'>
         <% #FIXME_AB: Should not refer model directly in views. -%>
-        <%= f.collection_select :brand_id, Brand.all, :id, :name %>
+        <%= f.collection_select :brand_id, @brands, :id, :name %>
+        <%=#fixed %>
       </div>
     </div>
 
     <div class="field">
       <div class='form-label'>
-        <%= f.label :title %>
+        <%= f.label :title, class: 'inliner-tile' %>
+        <p class='mandatory'>*</p>
       </div>
       <div class='form-text'>
         <%= f.text_field :title %>
@@ -31,7 +34,8 @@
 
     <div class="field">
       <div class='form-label'>
-        <%= f.label :description %>
+        <%= f.label :description, class: 'inliner-tile' %>
+        <p class='mandatory'>*</p>
       </div>
       <div class='form-text'>
         <%= f.text_area :description %>
@@ -39,6 +43,9 @@
     </div>
     <div class="form-action">
       <%= f.submit %>
+    </div>
+    <div id='mandatory-comment'>
+      <p class='mandatory'>*mandatory field</p>
     </div>
   </div>
 <% end %>

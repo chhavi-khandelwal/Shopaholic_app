@@ -11,6 +11,6 @@ module ApplicationHelper
     end
     link_to name, 'javascript:;', "data-association" => "#{association}", "data-content" => "#{fields}", "class" => 'add-image'
   end
-  
+
 end
 

@@ -1,11 +1,10 @@
 class Admin::BrandsController < Admin::AdminsController
-  before_action :set_brand, only: [:show, :edit, :update, :destroy]
+  before_action :set_brand, only: [:update, :destroy, :cannot_destroy_brand]
   
   rescue_from ActiveRecord::DeleteRestrictionError, with: :cannot_destroy_brand
-  rescue_from ActiveRecord::RecordNotFound, with: :brand_not_found
 
   def index
-    @brands = Brand.page(params[:page]).per(3)
+    @brands = Brand.page(params[:page]).per(8)
   end
 
   def new
@@ -18,30 +17,38 @@ class Admin::BrandsController < Admin::AdminsController
     if @brand.save
       redirect_to admin_brands_path, notice: 'Brand was successfully created.'
     else
-      render action: 'new'
+      render action: :new
     end
   end
 
   def update
     if @brand.update(brand_params)
       #FIXME_AB: As a good practice try to add the name/details of the record updated or created in the flash message
-      redirect_to admin_brands_path, notice: 'Brand was successfully updated.'
+      redirect_to admin_brands_path, notice: "Brand #{ @brand.name } was successfully updated."
+      #fixed
     else
       #FIXME_AB: As a good practice you should use symbol whenever you can. render action: :edit would work in the same way
-      render action: 'edit'
+      render action: :edit
+      #fixed
     end
   end
 
   def destroy
-    @brand.destroy
+    if @brand.destroy
     #FIXME_AB: Its a good practice to add a flash message whenever you do a redirect
-    redirect_to admin_brands_url
+      redirect_to admin_brands_url, notice: "Brand #{ @brand.name } was successfully destroyed."
+    else
+      redirect_to admin_brands_url, alert: "Brand #{ @brand.name } was not successfully destroyed."
+    end
+    #fixed
   end
 
   private
   def set_brand
     #FIXME_AB: What if brand is not found with the id
-    @brand = Brand.find(params[:id])
+    @brand = Brand.find_by(id: params[:id])
+    redirect_to root_url, alert: "Brand not found" if(@brand.nil?)
+    #fixed
   end
 
   def brand_params
@@ -50,11 +57,7 @@ class Admin::BrandsController < Admin::AdminsController
 
   def cannot_destroy_brand
     #FIXME_AB: Does it also work with delete?
-    redirect_to admin_brands_path, notice: 'Brand has products..It cannot be destroyed'
+    redirect_to admin_brands_path, notice: "Brand #{ @brand.name } has products..It cannot be destroyed"
   end
 
-  def brand_not_found
-    #FIXME_AB: Typo
-    redirect_to admin_brands_path, notice: 'Brand doesnot exist'
-  end
 end

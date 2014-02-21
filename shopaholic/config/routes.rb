@@ -66,7 +66,7 @@ Shopaholic::Application.routes.draw do
     end
     resources :brands
     resource :dashboard
-    root :to => 'dashboards#show', only: [:show]
+    root :to => 'dashboard#show', only: [:show]
   end
 
   resources :home

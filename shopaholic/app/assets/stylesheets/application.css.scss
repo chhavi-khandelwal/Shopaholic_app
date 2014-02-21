@@ -19,6 +19,16 @@
   display: none;
 }
 
+#mandatory-comment {
+  margin-top: 5%;
+}
+
+.mandatory {
+  color: red;
+  font-weight: bold;
+  display: inline;
+}
+
 .container-body {
   display: block;
   width: 96%;
