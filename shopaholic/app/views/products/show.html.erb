@@ -65,6 +65,6 @@
 </div>
 
 <div class='inline-tile cart-btn'>
-  <a id="cart-link" href="<%= 'sdsd'%>">Cart(<span id="cart-count"><%= Cart.find_by(id: session[:cart_id]).try(:line_items).try(:count) %></span>)</a><br/>
+  <a id="cart-link" href="<%= cart_path(Cart.find_by(id: session[:cart_id]))%>">Cart(<span id="cart-count"><%= Cart.find_by(id: session[:cart_id]).try(:line_items).try(:count) %></span>)</a><br/>
   <button type="button" class="btn btn-success add-btn" id="add-cart" data-href="<%= carts_path %>">Add To Cart</button>
 </div>

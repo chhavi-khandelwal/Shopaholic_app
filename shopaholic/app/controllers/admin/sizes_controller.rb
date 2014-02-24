@@ -2,8 +2,6 @@ class Admin::SizesController < Admin::AdminsController
   before_action :set_product, only: [:new, :create]
   before_action :set_size, only: [:update, :destroy, :edit]
 
-  #FIXME_AB: This way we are handling any RecordNotFound as size_not_found. Not the right way. Should handle using if else condition where we expect this type of situation can occur. I am against this approach. Should not be done at any place in the application
-  #fixed-used if condition
 
   def new
     @size = Size.new 
@@ -17,6 +15,7 @@ class Admin::SizesController < Admin::AdminsController
       render json: { size: @size, color: @size.color.name }
       #FIXME_AB: Why we need empty format blocks. Also since here we have only one format, lets remove them
       #fixed
+      flash[:notice] = "Successfully created size"
     else
       render json: { error: @size.errors.full_messages.first }
     end
@@ -29,6 +28,10 @@ class Admin::SizesController < Admin::AdminsController
     else
       render action: :edit
     end
+  end
+
+  def edit
+      render partial: 'shallow_form'
   end
 
   def destroy

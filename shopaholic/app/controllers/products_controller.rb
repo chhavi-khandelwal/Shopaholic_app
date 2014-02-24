@@ -5,5 +5,4 @@ class ProductsController < ApplicationController
     @color = Color.find_by(id: params[:color_id])
     # redirect_to root, alert: 'Product not found' if(@product.nil? || @color.nil?)
   end
-  #fixed
 end

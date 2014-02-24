@@ -1,4 +1,3 @@
-#FIXME_AB: See brand model for comments
 class Size < ActiveRecord::Base
   include DependencyHelper
   
@@ -9,8 +8,6 @@ class Size < ActiveRecord::Base
 
   validates :name, :price, :quantity, :discounted_price, :sku, presence: true
 
-  #FIXME_AB: TEXT_REGEXP does not make it clear what it is doing. Also Make a constant has not just a constant like: REGEXP[:name_format]
-  #fixed
 
   validates :name, length: { maximum: 25 }
   validates :name, format: { with: REGEXP[:name_format], multiline: true, message: "- Special characters not allowed" }, unless: "name.blank?"

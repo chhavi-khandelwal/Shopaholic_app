@@ -1,4 +1,3 @@
-#FIXME_AB: Look brand modal for comments
 class Category < ActiveRecord::Base
   include DependencyHelper
   has_many :brands, through: :products

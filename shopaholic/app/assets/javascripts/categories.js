@@ -8,9 +8,7 @@ function ProductGrid() {
 
     //binds click event to the input checkboxes
     this.bindEvents = function() {
-        // #FIXME_AB: This is too generic event binding any checkbox in the body. Make it more precise 
         $('#filters').on('click', 'input[type="checkbox"]', productGrid.filterProducts);
-        //fixed
     }
 
     //filters the products from selected filter
@@ -34,8 +32,6 @@ function ProductGrid() {
         var filters = $('#' + filter + '-filters' + ' input[type="checkbox"]:checked');
         if (filters.length > 0) {
             filters.each(function() {
-                // #FIXME_AB: There are too many things going in following line 
-                //fixed
                 var filterSelector = filter + "='" + $(this).val() + "'"
                 selectedProducts.push("div.latest-products[data-" + filterSelector + "]");
             });

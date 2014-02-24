@@ -15,8 +15,6 @@ class Product < ActiveRecord::Base
   validates :title, uniqueness: { case_sensitive: false }
   validates :description, presence: true, length: { maximum: 1000 }
 
-  #FIXME_AB: If a product does not have colors and sizes, it should not be displayed in frontend. Right now it gives an exception undefined method `images' for nil:NilClass
-  #fixed
   private
   def set_published
     if sizes.exists?
