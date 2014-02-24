@@ -1,6 +1,8 @@
 class Brand < ActiveRecord::Base
   has_many :categories, through: :products
   #FIXME_AB: @brand. destroy will raise exception by :restrict_with_exception. but what about @brand.delete or Brand.delete_all
+  include DependencyHelper
+  #fixed
   has_many :products, dependent: :restrict_with_exception
   has_one :image, as: :imageable
 

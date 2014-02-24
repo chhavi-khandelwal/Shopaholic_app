@@ -1,5 +1,6 @@
 #FIXME_AB: Look brand modal for comments
 class Category < ActiveRecord::Base
+  include DependencyHelper
   has_many :brands, through: :products
   has_many :products, dependent: :restrict_with_exception
   validates :name, presence: true, length: { maximum: 255 }

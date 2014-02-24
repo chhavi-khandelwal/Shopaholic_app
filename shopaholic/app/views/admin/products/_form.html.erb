@@ -8,7 +8,6 @@
       <div class='form-list'>
         <% #FIXME_AB: Should not refer model directly in views. -%>
         <%= f.collection_select :category_id, @categories, :id, :name  %>
-        <%=#fixed %>
       </div>
     </div>
     <div>
@@ -18,7 +17,6 @@
       <div class='form-list'>
         <% #FIXME_AB: Should not refer model directly in views. -%>
         <%= f.collection_select :brand_id, @brands, :id, :name %>
-        <%=#fixed %>
       </div>
     </div>
 

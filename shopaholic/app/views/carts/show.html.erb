@@ -1,0 +1,6 @@
+<% @cart.line_items.each do |cart_item| %>
+  <%= cart_item.size.name %>
+  <%= cart_item.size.color.name %>
+  <%= cart_item.size.color.product.title %>
+  <b><%= cart_item.quantity %></b>
+<% end %>

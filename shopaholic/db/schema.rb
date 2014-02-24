@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219094957) do
+ActiveRecord::Schema.define(version: 20140223141449) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +51,14 @@ ActiveRecord::Schema.define(version: 20140219094957) do
   end
 
   add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
+
+  create_table "line_items", force: true do |t|
+    t.integer  "cart_id"
+    t.integer  "size_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",   default: 1
+  end
 
   create_table "products", force: true do |t|
     t.string   "title"

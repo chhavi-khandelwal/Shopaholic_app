@@ -1,15 +1,17 @@
 <div class="product-focus span8">
+  <div class="alert fade in alert-danger visibility" id="before-add"></div>
   <div class="product-angles">
     <% @color.images.each do |image| %>
-      <div class='angle' data-focussed-image="<%= image.file.url(:medium) %>">
-        <%= image_tag(image.file.url(:small), class: 'small-image') %>
+      <div class='angle' data-focussed-image="<%= image.thumbnail(:medium) %>">
+        <%= image_tag(image.thumbnail(:small), class: 'small-image') %>
       </div>
     <% end%>
   </div>
 
   <div class='product-in-focus'>
     <%#FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:medium) -%>
-    <%= image_tag(@color.images.first.file.url(:medium)) %>
+    <%= image_tag(@color.thumbnail_in_focus(:medium)) %>
+    <%#fixed -%>
   </div>
 
   <div id='offer-sizes'>
@@ -19,7 +21,7 @@
     </div>
     <div class='size-container'>
       <% @color.sizes.each do |size| %>
-        <div class='size-all'>
+        <div class='size-all' data-id="<%= size.id %>">
           <span>
             <%= size.name %>
           </span>
@@ -48,14 +50,21 @@
 
   <div id='color-avail'>
     <% @product.colors.each do |color| %>
-      <div class='color-all' data-image0="<%= color.images.first.file.url(:small) %>" data-image1="<%= color.images.second.file.url(:small) %>" data-image2="<%= color.images.last.file.url(:small) %>" data-focussed-image="<%= color.images.first.file.url(:medium) %>" data-image-angle0="<%= color.images.first.file.url(:medium) %>" data-image-angle1="<%= color.images.second.file.url(:medium) %>" data-image-angle2="<%= color.images.last.file.url(:medium) %>" data-sizes="<%= color.sizes.pluck(:name).flatten %>">
+      <% data_images, data_image_angles = [], [] %>
+      <% color.images.each do |image| %>
+        <% data_images.push(image.thumbnail(:small)) %>
+        <% data_image_angles.push(image.thumbnail(:medium)) %>
+      <% end %>
+      <div class='color-all' data-images="<%= data_images %>" data-focussed-image="<%= color.images.first.file.url(:medium) %>" data-image-angles="<%= data_image_angles %>" data-sizes="<%= color.sizes.pluck(:name).flatten %>" data-size-ids="<%= color.sizes.pluck(:id).flatten %>">
         <%#FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:small) -%>
-        <%= image_tag(color.images.first.file.url(:small), class: 'small-image') %>
+        <%= image_tag(color.thumbnail_in_focus(:small), class: 'small-image') %>
+        <%#fixed -%>
       </div>
     <% end %>
   </div>
 </div>
 
 <div class='inline-tile cart-btn'>
-  <button type="button" class="btn btn-success add-btn">Add To Cart</button>
+  <a id="cart-link" href="<%= 'sdsd'%>">Cart(<span id="cart-count"><%= Cart.find_by(id: session[:cart_id]).try(:line_items).try(:count) %></span>)</a><br/>
+  <button type="button" class="btn btn-success add-btn" id="add-cart" data-href="<%= carts_path %>">Add To Cart</button>
 </div>

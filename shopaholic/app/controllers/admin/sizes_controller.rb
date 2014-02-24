@@ -7,19 +7,18 @@ class Admin::SizesController < Admin::AdminsController
 
   def new
     @size = Size.new 
-    # render partial: 'form'
+    render partial: 'form'
   end
 
   def create
     #FIXME_AB: You should use color.size.build
     @size = Size.new(size_params)
     if @size.save
-      flash[:notice] = "Successfully created size"
+      render json: { size: @size, color: @size.color.name }
       #FIXME_AB: Why we need empty format blocks. Also since here we have only one format, lets remove them
       #fixed
     else
-      flash[:alert] = "Can't create product"
-      render action: :new 
+      render json: { error: @size.errors.full_messages.first }
     end
 
   end
@@ -30,12 +29,6 @@ class Admin::SizesController < Admin::AdminsController
     else
       render action: :edit
     end
-  end
-
-  def edit
-    #FIXME_AB: Since we have a @size available we can directly use @size.color.product wherever needed. SO we don't need to define @product variable
-      render partial: 'shallow_form'
-    #fixed
   end
 
   def destroy

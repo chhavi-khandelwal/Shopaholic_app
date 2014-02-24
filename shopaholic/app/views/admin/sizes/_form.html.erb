@@ -1,6 +1,5 @@
-<%= form_for [:admin, :product, @size], remote: true do |f| %>
-  <%= render partial: '/errors', locals: { tag: @size } %>
-  
+<%= form_for [:admin, :product, @size] do |f| %>
+
   <table class="table color-table">
     <tbody>
       <tr>
@@ -32,7 +31,7 @@
           <%= f.text_field :quantity, class: 'size-text-field' %>
         </td>
         <td>
-          <%= f.submit %>
+          <%= f.submit 'Create Size', id: 'size-create', data: { href: admin_product_sizes_path(@product) } %>
         </td>
       </tr>
       <tr><p class='mandatory'>*mandatory field</p></tr>

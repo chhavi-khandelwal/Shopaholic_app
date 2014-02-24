@@ -3,9 +3,10 @@
 </div>
 
 <div class="head" id="new-tag-btn">
-  <%= button_to 'New Size', new_admin_product_size_path(@product), class: 'btn-primary btn form-btn', data: { href: new_admin_product_size_path(@product) }, method: :get, remote: true %>
+  <%= button_to 'New Size', new_admin_product_size_path(@product), class: 'btn-primary btn form-btn', data: { href: new_admin_product_size_path(@product) }, method: :get %>
 </div>
 
+<p id='error-content'></p>  
 <div id="size-form"></div>
 
 <table class="table size-table">

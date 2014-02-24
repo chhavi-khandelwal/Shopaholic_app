@@ -1,4 +1,6 @@
 class Color < ActiveRecord::Base
+  include DependencyHelper
+  
   has_many :sizes, dependent: :restrict_with_exception
   has_many :images, as: :imageable, dependent: :destroy
   belongs_to :product, touch: true
@@ -9,4 +11,9 @@ class Color < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, update_only: true, allow_destroy: true
 
+
+  def thumbnail_in_focus(size)
+    images.first.file.url(size)
+  end
+  
 end

@@ -1,6 +1,11 @@
 #FIXME_AB: See brand model for comments
 class Size < ActiveRecord::Base
+  include DependencyHelper
+  
   belongs_to :color, touch: true
+
+  has_many :line_items
+  has_many :carts, through: :line_items
 
   validates :name, :price, :quantity, :discounted_price, :sku, presence: true
 
