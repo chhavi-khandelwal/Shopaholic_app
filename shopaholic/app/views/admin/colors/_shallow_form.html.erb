@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td>
-          <%= f.text_field :name, class: 'size-text-field' %>
+          <%= f.text_field :name, required: true, class: 'size-text-field' %>
         </td>
         <td>
           <%= f.fields_for :images do |builder| %>

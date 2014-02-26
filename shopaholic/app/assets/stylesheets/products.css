@@ -12,6 +12,18 @@
   width: 10%;
 }
 
+#bottom-panel {
+  text-align: center;
+  margin-top: 2%;
+}
+
+
+.bottom-panel-image {
+  width: 800px;
+  height: 180px;
+  margin-left: 5%;
+}
+
 .size-container {
   display: block;
   margin-left: 5%;

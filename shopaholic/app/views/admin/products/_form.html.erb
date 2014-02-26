@@ -24,7 +24,7 @@
         <p class='mandatory'>*</p>
       </div>
       <div class='form-text'>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, required: true %>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
         <p class='mandatory'>*</p>
       </div>
       <div class='form-text'>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, required: true %>
       </div>
     </div>
     <div class="form-action">

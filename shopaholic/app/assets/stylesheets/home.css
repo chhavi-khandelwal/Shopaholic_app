@@ -2,6 +2,16 @@
   display: inline-block;
 }
 
+.panel-image {
+  width: 720px;
+  height: 688px;
+}
+
+
+#side-panel {
+  margin-top: 3%;
+}
+
 #top-head {
   margin: 1%;
   margin-left: 65%;

@@ -13,22 +13,22 @@
       </tr>
       <tr>
         <td>
-          <%= f.text_field :name, class: 'size-text-field' %>
+          <%= f.text_field :name, class: 'size-text-field', required: true %>
         </td>
         <td>
-          <%= f.text_field :sku, class: 'size-text-field' %>
+          <%= f.text_field :sku, class: 'size-text-field', required: true %>
         </td>
         <td>
           <%= f.collection_select :color_id, @product.colors, :id, :name, {}, class: 'size-select-list'  %>
         </td>
         <td>
-          <%= f.text_field :price, class: 'size-text-field' %>
+          <%= f.text_field :price, class: 'size-text-field', required: true %>
         </td>
         <td>
-          <%= f.text_field :discounted_price, class: 'size-text-field' %>
+          <%= f.text_field :discounted_price, class: 'size-text-field', required: true %>
         </td>
         <td>
-          <%= f.text_field :quantity, class: 'size-text-field' %>
+          <%= f.text_field :quantity, class: 'size-text-field', required: true %>
         </td>
         <td>
           <%= f.submit 'Create Size', id: 'size-create', data: { href: admin_product_sizes_path(@product) } %>

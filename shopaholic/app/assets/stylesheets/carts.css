@@ -43,7 +43,7 @@
   margin-top: 1%;
 }
 
-#items-container {
+.items-container {
   text-align: center;
   border: 2px solid #D0CBCA;
   border-radius: 5px;

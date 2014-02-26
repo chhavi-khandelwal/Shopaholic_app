@@ -67,10 +67,7 @@ function ProductDashBoard() {
   this.setSizes = function(product_color, sizes) {
     var size_ids = product_color.data('size-ids');
     var size_prices = product_color.data('size-price');
-    console.log(size_prices)
     var size_discounted_prices = product_color.data('size-discounted-price');
-    console.log(size_discounted_prices)
-
     var product_sizes = [];
     for(var i = 0; i < size_ids.length; i++) {
       product_sizes.push($('<div/>').addClass('size-all')

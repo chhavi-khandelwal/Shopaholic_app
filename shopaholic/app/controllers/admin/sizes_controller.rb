@@ -10,7 +10,9 @@ class Admin::SizesController < Admin::AdminsController
 
   def create
     #FIXME_AB: You should use color.size.build
-    @size = Size.new(size_params)
+    color = Color.find_by(id: size_params[:color_id])
+    @size = color.sizes.build(size_params)
+    #fixed
     if @size.save
       render json: { size: @size, color: @size.color.name }
       #FIXME_AB: Why we need empty format blocks. Also since here we have only one format, lets remove them

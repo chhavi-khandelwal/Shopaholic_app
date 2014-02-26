@@ -1,4 +1,4 @@
-<div class="product-focus span8">
+<div class="product-focus span10 offset1">
   <div class="alert fade in alert-danger visibility" id="before-add"></div>
   <div class="product-angles">
     <% @color.images.each do |image| %>
@@ -65,5 +65,8 @@
         <%#fixed -%>
       </div>
     <% end %>
+  </div>
+  <div id='bottom-panel'>
+    <%= image_tag "go-shop.jpg", class: 'bottom-panel-image' %>
   </div>
 </div>

@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <td>
-          <%= f.text_field :name, class: 'size-text-field', id: 'color-name' %>
+          <%= f.text_field :name, required: true, class: 'size-text-field', id: 'color-name' %>
         </td>
         <td>
           <%= f.fields_for :images, @color.images.build do |builder| %>

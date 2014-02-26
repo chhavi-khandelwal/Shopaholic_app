@@ -4,7 +4,9 @@ Shopaholic::Application.routes.draw do
   # get "products/show"
   # resources :products, only: [:show]
   resources :categories
-  resources :carts
+  resources :carts do
+     get 'payment', on: :member
+  end
   resources :line_items, only: [:destroy]
   get "products/:id/colors/:color_id", to: "products#show", as: 'product'
   get "home/index"

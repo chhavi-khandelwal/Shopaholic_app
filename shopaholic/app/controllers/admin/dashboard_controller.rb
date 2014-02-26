@@ -5,4 +5,5 @@ class Admin::DashboardController < Admin::AdminsController
     @categories = Category.all.limit(10)
     @recent_products = @products.order(created_at: :desc)
   end
+  #fixed
 end
