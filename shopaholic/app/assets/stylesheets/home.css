@@ -41,6 +41,7 @@
 
 #bottom-foot {
   margin: auto;
+  margin-top: 10%;
   padding-top: 2%;
   width: 90%;
   border-top: solid 2px #C54E4E;
@@ -88,8 +89,7 @@
   height: 200px;
 }
 
-.latest-products
-{
+.latest-products {
   display: inline-block;
   margin: 1%;
   width:30%;

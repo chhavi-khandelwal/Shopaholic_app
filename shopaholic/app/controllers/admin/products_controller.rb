@@ -13,7 +13,7 @@ class Admin::ProductsController < Admin::AdminsController
 
   def show
     #FIXME_AB: What about this: @product.sizes.order(:color_id)
-    @sizes = @product.sizes.where(color_id: @product.colors).order(:color_id)
+    @sizes = @product.sizes.order(:color_id)
   end
   
   def destroy
@@ -21,7 +21,8 @@ class Admin::ProductsController < Admin::AdminsController
       redirect_to admin_products_url(@product.category), notice: "Product #{ @product.title } was destroyed successfully."
     else
       #FIXME_AB: In case of failure, this message is not good.
-      redirect_to admin_products_url(@product.category), alert: "Product #{ @product.title } was not destroyed successfully."
+      redirect_to admin_products_url(@product.category), alert: "Product #{ @product.title } could not be destroyed."
+      #fixed
     end
   end
 

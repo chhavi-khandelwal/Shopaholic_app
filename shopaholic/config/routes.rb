@@ -5,6 +5,7 @@ Shopaholic::Application.routes.draw do
   # resources :products, only: [:show]
   resources :categories
   resources :carts
+  resources :line_items, only: [:destroy]
   get "products/:id/colors/:color_id", to: "products#show", as: 'product'
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.

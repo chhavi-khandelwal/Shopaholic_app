@@ -17,16 +17,21 @@
   <div id='offer-sizes'>
     <div id='size-name' class='block-tile'>
       <p class='inline-tile'> SELECT SIZE - </p>
-      <span id='selected-size-value' class='inline-tile'><strong><%= @color.sizes.first.name %></strong></span>
+      <% first_size = @color.sizes.first %>
+      <span id='selected-size-value' class='inline-tile'><strong><%= first_size.name %></strong></span>
     </div>
     <div class='size-container'>
       <% @color.sizes.each do |size| %>
-        <div class='size-all' data-id="<%= size.id %>">
+        <div class='size-all' data-id="<%= size.id %>" data-price="<%= size.price %>" data-discounted-price="<%= size.discounted_price %>">
           <span>
             <%= size.name %>
           </span>
         </div>
       <% end %>
+    </div>
+    <div id='size-price'>
+      <p id='real-price'>Real <%= first_size.price %></p>
+      <p id='discounted-price'>Discounted <%= first_size.discounted_price %></p>
     </div>
   </div>
 
@@ -46,25 +51,19 @@
         <p class='inliner-tile'><%= @product.brand.name %></p>
       </div>
     </div>
+    <div class='cart-btn'>
+      <button type="button" class="btn btn-success add-btn" id="add-cart" data-href="<%= carts_path %>">Add To Cart</button>
+    </div>
   </div>
 
   <div id='color-avail'>
     <% @product.colors.each do |color| %>
-      <% data_images, data_image_angles = [], [] %>
-      <% color.images.each do |image| %>
-        <% data_images.push(image.thumbnail(:small)) %>
-        <% data_image_angles.push(image.thumbnail(:medium)) %>
-      <% end %>
-      <div class='color-all' data-images="<%= data_images %>" data-focussed-image="<%= color.images.first.file.url(:medium) %>" data-image-angles="<%= data_image_angles %>" data-sizes="<%= color.sizes.pluck(:name).flatten %>" data-size-ids="<%= color.sizes.pluck(:id).flatten %>">
+      <% data_images, data_image_angles = get_product_images(color) %>
+      <div class='color-all' data-images="<%= data_images %>" data-focussed-image="<%= color.images.first.file.url(:medium) %>" data-image-angles="<%= data_image_angles %>" data-sizes="<%= color.sizes.pluck(:name) %>" data-size-ids="<%= color.sizes.pluck(:id) %>" data-size-price="<%= color.sizes.pluck(:price).collect(&:to_f) %>" data-size-discounted-price="<%= color.sizes.pluck(:discounted_price).collect(&:to_f) %>">
         <%#FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:small) -%>
         <%= image_tag(color.thumbnail_in_focus(:small), class: 'small-image') %>
         <%#fixed -%>
       </div>
     <% end %>
   </div>
-</div>
-
-<div class='inline-tile cart-btn'>
-  <a id="cart-link" href="<%= cart_path(Cart.find_by(id: session[:cart_id]))%>">Cart(<span id="cart-count"><%= Cart.find_by(id: session[:cart_id]).try(:line_items).try(:count) %></span>)</a><br/>
-  <button type="button" class="btn btn-success add-btn" id="add-cart" data-href="<%= carts_path %>">Add To Cart</button>
 </div>

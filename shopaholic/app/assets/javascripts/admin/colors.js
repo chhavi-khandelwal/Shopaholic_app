@@ -1,10 +1,3 @@
-$(document).ready(function() {
-  var imageHelper = new ImageHelper();
-  imageHelper.bindEvents();
-  var ajaxHelper = new AjaxHelper();
-  ajaxHelper.bindEvents();
-});
-  
 function ImageHelper() {
   var imageHelper = this;
   var imageCount = 3;
@@ -21,7 +14,7 @@ function ImageHelper() {
       var new_id = new Date().getTime();
       var regexp = new RegExp("new_" + $link.data('association'), "g");
       $link.parent().before($link.data('content').replace(regexp, new_id));
-    };
+    }
   }
 
   this.removeField = function() {
@@ -31,7 +24,7 @@ function ImageHelper() {
   }
 }
 
-function AjaxHelper() {
+function ColorAjaxHelper() {
 
   this.bindEvents = function() {
     $('.color-box').on('click', '.new-btn', this.getNewForm);
@@ -83,3 +76,11 @@ function AjaxHelper() {
     });
   }
 }
+
+$(document).ready(function() {
+  var ajaxHelper = new ColorAjaxHelper();
+  ajaxHelper.bindEvents();
+  var imageHelper = new ImageHelper();
+  imageHelper.bindEvents();
+});
+  

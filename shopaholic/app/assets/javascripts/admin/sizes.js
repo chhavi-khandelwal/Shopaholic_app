@@ -35,7 +35,7 @@ function AjaxHelper() {
         var size_text = ajaxHelper.getSizeText(response);
         $('#new_size').remove();
         $('#error-content').hide();
-        var color_name = response.color;
+        var color_name = 'color_' + response.size.color_id;
         var $current_row = ajaxHelper.getCurrentRow(response);
         ajaxHelper.createCurrentRow($current_row, size_text, response);
         ajaxHelper.displayCurrentRow(color_name, $current_row);
@@ -64,12 +64,10 @@ function AjaxHelper() {
     ajaxHelper.createEditLink(response, link_data);
     ajaxHelper.createDestroyLink(response, link_data);
     link_data.appendTo($current_row);
-    
-
   }
 
   this.createEditLink = function(response, link_data) {
-    var edit_link = $('<a/>').addClass('btn-primary btn').attr({ 'href': ('/admin/sizes/' + response.size.id + '/edit'), 'data-remote': 'true'}).html('Edit');
+    var edit_link = $('<a/>').addClass('btn-primary btn').attr({'href': ('/admin/sizes/' + response.size.id + '/edit'), 'data-remote': 'true'}).html('Edit');
     edit_link.appendTo(link_data);
   }
 
@@ -81,7 +79,7 @@ function AjaxHelper() {
   this.getCurrentRow = function(response) {
     $current_row = $('<tr/>', {
       id: ("size_" + response.size.id)
-      }).addClass(response.color);
+      }).addClass('color_' + response.color);
     return $current_row;
   }
 }

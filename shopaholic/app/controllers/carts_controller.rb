@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   before_action :set_size, only: [:create]
 
   def create
+    # session[:cart_id] = nil
     if(session[:cart_id])
       @cart = Cart.find_by(id: session[:cart_id])
     else

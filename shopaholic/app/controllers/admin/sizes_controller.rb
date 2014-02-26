@@ -30,10 +30,6 @@ class Admin::SizesController < Admin::AdminsController
     end
   end
 
-  def edit
-      render partial: 'shallow_form'
-  end
-
   def destroy
     @size.destroy
   end
