@@ -1,8 +1,8 @@
 <div id='display-container' class="span8">
   <div id="latest-products-container">
     <% @products.each do |product| %>
-      <% product.colors.each do |color| %> 
-        <div class="latest-products" id="product_<%= product.id %>"  data-color="<%= color.name %>" data-brand="<%= product.brand.name %>" data-sizes="<%= product.colors.collect { |color| color.sizes.pluck(:price) }.flatten.collect(&:to_f) %>">
+      <% product.colors.published.each do |color| %> 
+        <div class="latest-products" id="product_<%= product.id %>"  data-color="<%= color.name %>" data-brand="<%= product.brand.name %>" data-sizes="<%= product.colors.published.collect { |color| color.sizes.pluck(:price) }.flatten.collect(&:to_f) %>">
           <div class='latest-products-image'>
             <%= image_tag(color.images.first.file.url(:medium), class: 'latest-color-image') %>
             <%= button_to 'Quick View', product_path({id: product.id, color_id: color.id}), class: 'quick-view visibility btn', method: :get %>

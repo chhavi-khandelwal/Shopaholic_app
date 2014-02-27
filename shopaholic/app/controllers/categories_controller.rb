@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show] 
   def show
     @products = @category.products.published
-    # @products = @category.products.available_to_display.published
   end
 
   private

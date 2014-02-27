@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   has_many :colors
   belongs_to :category
   belongs_to :brand
-  before_save :set_published
+  after_touch :set_published
 
   scope :published, -> { where published: true }
   
@@ -16,8 +16,11 @@ class Product < ActiveRecord::Base
 
   private
   def set_published
-    if sizes.exists?
-      self.published = true
+    if colors.published.exists?
+      update_attributes(published: true)
+    else
+      update_attributes(published: false)
     end
+    true
   end
 end

@@ -6,9 +6,9 @@
     <% @products.each do |product| %>
       <div class="latest-products">
         <div class='latest-products-image'>
-          <% color = product.colors.first %>
+          <% color = product.colors.published.first %>
           <% #FIXME_AB: as stated other places it should be extracted in a method -%>
-          <%= image_tag(product.colors.first.thumbnail_in_focus(:medium)) %>
+          <%= image_tag(color.thumbnail_in_focus(:medium)) %>
           <%= button_to 'Quick View', product_path({id: product.id, color_id: color.id}), class: 'quick-view visibility btn', method: :get %>
         </div>
         <div class="latest-products-desc" >

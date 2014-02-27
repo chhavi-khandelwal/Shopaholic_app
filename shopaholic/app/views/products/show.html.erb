@@ -57,7 +57,7 @@
   </div>
 
   <div id='color-avail'>
-    <% @product.colors.each do |color| %>
+    <% @product.colors.published.each do |color| %>
       <% data_images, data_image_angles = get_product_images(color) %>
       <div class='color-all' data-images="<%= data_images %>" data-focussed-image="<%= color.images.first.file.url(:medium) %>" data-image-angles="<%= data_image_angles %>" data-sizes="<%= color.sizes.pluck(:name) %>" data-size-ids="<%= color.sizes.pluck(:id) %>" data-size-price="<%= color.sizes.pluck(:price).collect(&:to_f) %>" data-size-discounted-price="<%= color.sizes.pluck(:discounted_price).collect(&:to_f) %>">
         <%#FIXME_AB: Make a method in color model, so that you can call that for thumbnail with and argument for the size of thumbnail. like: color.thumbnail(:small) -%>
